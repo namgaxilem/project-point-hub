@@ -40,7 +40,7 @@ export default function MainFooter() {
             </li>
           </ul>
         </div>
-        <hr className="my-4 border-gray-200 sm:mx-auto dark:border-gray-700" />
+        <hr className="my-4 border-bgDark sm:mx-auto dark:border-gray-700 divide-dotted" />
         <span className="block text-sm text-gray-500 text-center dark:text-gray-400">
           © 2024{" "}
           <a href="/" className="hover:underline">
