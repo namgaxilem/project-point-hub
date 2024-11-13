@@ -2,7 +2,7 @@ import { RootContext } from "@/contexts";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { useLanguage, useLocale } from "./dictionaries";
+import { getLanguage, getLocale } from "./dictionaries";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,8 +25,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const dict = await useLanguage();
-  const locale = await useLocale();
+  const dict = await getLanguage();
+  const locale = await getLocale();
 
   return (
     <html lang="en" className="dark">

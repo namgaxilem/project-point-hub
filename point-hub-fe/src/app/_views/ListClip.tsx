@@ -1,8 +1,7 @@
 import { Pagination } from "@nextui-org/react";
 import Link from "next/link";
 
-interface Props {}
-export default function ListClip({}: Props) {
+export default function ListClip() {
   return (
     <>
       <div className="flex flex-wrap gap-y-7">

@@ -11,7 +11,7 @@ export type LocaleType = "en" | "vi";
 
 export const getDictionary = async (locale) => dictionaries[locale]();
 
-export const useLanguage = async () => {
+export const getLanguage = async () => {
   const cookieStore = await cookies();
   const langCookie = cookieStore.get(PREFERED_LANG_COOKIE_NAME);
   if (
@@ -25,7 +25,7 @@ export const useLanguage = async () => {
   }
 };
 
-export const useLocale = async (): Promise<LocaleType> => {
+export const getLocale = async (): Promise<LocaleType> => {
   const cookieStore = await cookies();
   const langCookie = cookieStore.get(PREFERED_LANG_COOKIE_NAME);
   if (

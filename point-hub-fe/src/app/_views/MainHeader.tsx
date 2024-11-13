@@ -2,23 +2,18 @@
 
 import { SearchIcon } from "@/icons/SearchIcon";
 import {
-  Button,
   Input,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Tooltip,
   useDisclosure,
 } from "@nextui-org/react";
 import Link from "next/link";
 import ChangeLangBtn from "./ChangeLangBtn";
 import DesktopDarkmode from "./DarkmodeToggle";
-import { useState } from "react";
 
 const Categories = () => {
   return (
@@ -26,100 +21,100 @@ const Categories = () => {
       <div className="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
         <ul className="space-y-4" aria-labelledby="mega-menu-dropdown-button">
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               About Us
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Library
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Resources
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Pro Version
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
       <div className="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
         <ul className="space-y-4">
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Blog
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Newsletter
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Playground
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="#"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               License
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
       <div className="p-4">
         <ul className="space-y-4">
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Contact Us
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Support Center
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Terms
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -133,7 +128,7 @@ const MobileSideMenuContent = () => {
       <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul className="space-y-2 font-medium">
           <li>
-            <a
+            <Link
               href="/"
               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
@@ -143,10 +138,10 @@ const MobileSideMenuContent = () => {
                 alt="Flowbite Logo"
               />
               <span className="ms-3">Trang chu</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
@@ -163,10 +158,10 @@ const MobileSideMenuContent = () => {
               <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                 3
               </span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/"
               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
@@ -180,7 +175,7 @@ const MobileSideMenuContent = () => {
                 <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
               </svg>
               <span className="flex-1 ms-3 whitespace-nowrap">The loai</span>
-            </a>
+            </Link>
           </li>
         </ul>
         <Categories />
@@ -200,7 +195,7 @@ export default function MainHeader() {
     <header>
       <nav className="bg-bgLight px-4 lg:px-6 py-2.5 dark:bg-bgDark border-b-1 dark:border-dividerDark border-dividerLight">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <a href="/" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               className="mr-3 h-6 sm:h-9"
@@ -209,20 +204,20 @@ export default function MainHeader() {
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
               JAV
             </span>
-          </a>
+          </Link>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
             id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 items-center">
               <li>
-                <a
+                <Link
                   href="/"
                   className="block py-2 pr-4 pl-3 text-white rounded bg-blue-700 lg:bg-transparent lg:text-blue-700 lg:p-0 dark:text-white"
                   aria-current="page"
                 >
                   Trang chủ
-                </a>
+                </Link>
               </li>
               <li>
                 <Input
@@ -256,12 +251,12 @@ export default function MainHeader() {
                 />
               </li>
               <li>
-                <a
+                <Link
                   href="/top-watches"
                   className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Xem nhiều
-                </a>
+                </Link>
               </li>
               <li>
                 <Tooltip className="p-0" content={<Categories />}>
