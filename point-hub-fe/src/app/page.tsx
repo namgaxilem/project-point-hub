@@ -6,8 +6,8 @@ export default function Page() {
   return (
     <>
       <MainHeader />
-      <section className="py-24  dark:bg-bgDark bg-bgLight">
-        <div className="mx-auto px-4">
+      <section className="md:py-24 py-12 dark:bg-bgDark bg-bgLight">
+        <div className="">
           <ListClip />
         </div>
       </section>

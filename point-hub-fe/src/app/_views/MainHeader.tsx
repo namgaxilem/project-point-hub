@@ -63,7 +63,7 @@ const Categories = () => {
         <ul className="space-y-4">
           <li>
             <a
-              href="#"
+              href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Blog
@@ -71,7 +71,7 @@ const Categories = () => {
           </li>
           <li>
             <a
-              href="#"
+              href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Newsletter
@@ -79,7 +79,7 @@ const Categories = () => {
           </li>
           <li>
             <a
-              href="#"
+              href="/"
               className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
             >
               Playground
@@ -257,7 +257,7 @@ export default function MainHeader() {
               </li>
               <li>
                 <a
-                  href="/top-watch"
+                  href="/top-watches"
                   className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Xem nhiều

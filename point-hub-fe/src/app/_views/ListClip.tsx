@@ -1,33 +1,37 @@
+import { Pagination } from "@nextui-org/react";
 import Link from "next/link";
 
-export default function ListClip() {
+interface Props {}
+export default function ListClip({}: Props) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      {Array.from({ length: 100 }, (_, index) => (
-        <Link
-          key={index}
-          href="javascript:;"
-          className="mx-auto sm:mr-0 group cursor-pointer lg:mx-auto dark:bg-bgDark bg-bgLight transition-all duration-500"
-        >
-          <div className="">
+    <>
+      <div className="flex flex-wrap gap-y-7">
+        {Array.from({ length: 30 }, (_, index) => (
+          <Link
+            key={index}
+            href={`/watch/${index}`}
+            className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
+          >
             <img
-              src="https://pagedone.io/asset/uploads/1700726158.png"
+              src="https://javmost.me/wp-content/uploads/2024/11/SONE-407-400x269.jpg"
               alt="face cream"
-              className="w-full aspect-square rounded-2xl object-cover"
+              className="w-full max-w-[270px] mx-1 aspect-square rounded object-cover"
             />
-          </div>
-          <div className="mt-5">
-            <div className="flex items-center justify-between">
-              <h6 className="font-semibold text-xl leading-8 text-black dark:text-textDark transition-all duration-500 group-hover:text-indigo-600">
+            <div className="mt-1">
+              <h6 className="font-semibold text-lg leading-8 text-black dark:text-textDark transition-all duration-500 group-hover:text-indigo-600">
                 Face cream
               </h6>
+              <p className="font-normal text-xs text-gray-500">
+                Orange & Aloe Vera
+              </p>
             </div>
-            <p className="mt-2 font-normal text-sm leading-6 text-gray-500">
-              Orange & Aloe Vera
-            </p>
-          </div>
-        </Link>
-      ))}
-    </div>
+          </Link>
+        ))}
+      </div>
+
+      <div className="flex justify-center items-center mt-10">
+        <Pagination isCompact showControls total={10} initialPage={1} />
+      </div>
+    </>
   );
 }

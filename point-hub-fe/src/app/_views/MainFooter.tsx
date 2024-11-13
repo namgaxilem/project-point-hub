@@ -1,6 +1,6 @@
 export default function MainFooter() {
   return (
-    <footer className="bg-white shadow dark:bg-gray-900 absolute bottom-0 w-full">
+    <footer className="bg-white shadow dark:bg-bgDark w-full">
       <hr className="border-gray-200 sm:mx-auto dark:border-dividerDark border-dividerLight md:mb-1" />
       <div className="w-full max-w-screen-xl mx-auto md:px-10 px-5 pt-8 pb-4">
         <div className="sm:flex sm:items-center sm:justify-between">
