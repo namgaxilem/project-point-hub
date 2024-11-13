@@ -3,7 +3,7 @@ import { Switch } from "@nextui-org/react";
 import { useState } from "react";
 
 export default function DarkmodeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const toggleDark = (e) => {
     setIsDarkMode(e.target.checked);
@@ -16,6 +16,7 @@ export default function DarkmodeToggle() {
 
   return (
     <Switch
+      size="sm"
       defaultSelected
       onChange={toggleDark}
       isSelected={isDarkMode}
@@ -53,6 +54,6 @@ export default function DarkmodeToggle() {
         )
       }
       className="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm mr-2"
-    ></Switch>
+    />
   );
 }

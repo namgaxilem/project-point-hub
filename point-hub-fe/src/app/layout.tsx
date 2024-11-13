@@ -29,9 +29,9 @@ export default async function RootLayout({
   const locale = await useLocale();
 
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:ndo-border-dark relative h-auto text-base text-gray-900 dark:bg-black dark:text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:ndo-border-dark relative text-base text-gray-900 dark:bg-black dark:text-white`}
       >
         <RootContext dict={dict} locale={locale}>
           {children}
