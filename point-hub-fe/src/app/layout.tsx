@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { getLanguage, getLocale } from "./dictionaries";
+import { SITE_NAME } from "@/config";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Free adult videos for everyone",
+  title: `${SITE_NAME} | Free adult videos for everyone`,
   description:
     "Free adult/porn videos to watch for completely free! Just watch and enjoy!",
 };
