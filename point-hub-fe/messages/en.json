@@ -1,1 +1,9 @@
-{}
+{
+  "header": {
+    "homePage": "Home",
+    "topWatch": "Top Watches",
+    "categories": "Categories",
+    "searchHolder": "Type to search any videos",
+    "searchTitle": "Search"
+  }
+}

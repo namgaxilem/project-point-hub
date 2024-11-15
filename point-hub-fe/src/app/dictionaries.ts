@@ -14,11 +14,7 @@ export const getDictionary = async (locale) => dictionaries[locale]();
 export const getLanguage = async () => {
   const cookieStore = await cookies();
   const langCookie = cookieStore.get(PREFERED_LANG_COOKIE_NAME);
-  if (
-    langCookie &&
-    langCookie.value &&
-    ["en", "ko"].includes(langCookie.value)
-  ) {
+  if (langCookie?.value && ["en", "vi"].includes(langCookie.value)) {
     return getDictionary(langCookie.value);
   } else {
     return getDictionary("en");
@@ -28,13 +24,9 @@ export const getLanguage = async () => {
 export const getLocale = async (): Promise<LocaleType> => {
   const cookieStore = await cookies();
   const langCookie = cookieStore.get(PREFERED_LANG_COOKIE_NAME);
-  if (
-    langCookie &&
-    langCookie.value &&
-    ["en", "ko"].includes(langCookie.value)
-  ) {
+  if (langCookie?.value && ["en", "vi"].includes(langCookie.value)) {
     return langCookie.value as LocaleType;
   } else {
-    return "vi";
+    return "en";
   }
 };
