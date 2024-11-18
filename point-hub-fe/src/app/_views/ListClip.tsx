@@ -12,7 +12,7 @@ export default function ListClip() {
             className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
           >
             <img
-              src="https://javmost.me/wp-content/uploads/2024/11/SONE-407-400x269.jpg"
+              src="https://www.w3schools.com/html/pic_trulli.jpg"
               alt="face cream"
               className="w-full max-w-[270px] mx-1 aspect-square rounded object-cover"
             />
