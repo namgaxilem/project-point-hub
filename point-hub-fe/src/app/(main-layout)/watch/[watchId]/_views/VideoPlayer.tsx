@@ -57,9 +57,9 @@ export default function VideoPlayer() {
         </Chip>
       </div>
 
-      <main>
+      <section>
         <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
-      </main>
+      </section>
     </div>
   );
 }
