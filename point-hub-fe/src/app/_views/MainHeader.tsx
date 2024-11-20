@@ -15,114 +15,37 @@ import {
 } from "@nextui-org/react";
 import Link from "next/link";
 import ChangeLangBtn from "./ChangeLangBtn";
-import DesktopDarkmode from "./DarkmodeToggle";
+import DarkmodeToggle from "./DarkmodeToggle";
 import { Logo } from "./Logo";
 import { useLang } from "@/contexts";
+import { useCategories } from "@/query-client/category";
+import CategoryItem from "./CategoryItem";
 
-const Categories = () => {
+const CategoriesMobile = () => {
+  const { data: categories } = useCategories();
+
   return (
-    <div className="z-10 grid w-auto grid-cols-2 text-sm bg-bgLight dark:bg-bgDark border border-dividerLight dark:border-dividerDark rounded-lg shadow-md">
-      <div className="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-        <ul className="space-y-4" aria-labelledby="mega-menu-dropdown-button">
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Library
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Resources
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Pro Version
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-        <ul className="space-y-4">
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Newsletter
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Playground
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              License
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="p-4">
-        <ul className="space-y-4">
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Contact Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Support Center
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-            >
-              Terms
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6 p-[5px]">
+      {categories?.map((cate) => (
+        <li key={cate.documentId}>
+          <CategoryItem category={cate} />
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const CategoriesDesktop = () => {
+  const { data: categories } = useCategories();
+
+  return (
+    <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6 p-[20px]">
+      {categories?.map((cate) => (
+        <li key={cate.documentId}>
+          <CategoryItem category={cate} />
+        </li>
+      ))}
+    </ul>
   );
 };
 
@@ -131,7 +54,7 @@ const MobileSideMenuContent = () => {
 
   return (
     <ModalBody className="p-0">
-      <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+      <div className="h-full px-3 py-4 overflow-y-auto dark:bg-bgDark bg-bgLight">
         <ul className="space-y-2 font-medium mb-3">
           <li>
             <Link
@@ -160,7 +83,7 @@ const MobileSideMenuContent = () => {
               title={
                 <li>
                   <Link
-                    href="/"
+                    href="/categories"
                     className="flex items-center py-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -170,7 +93,7 @@ const MobileSideMenuContent = () => {
                 </li>
               }
             >
-              <Categories />
+              <CategoriesMobile />
             </AccordionItem>
           </Accordion>
         </ul>
@@ -189,7 +112,7 @@ export default function MainHeader() {
 
   return (
     <header>
-      <nav className="bg-bgLight px-4 lg:px-6 py-2.5 dark:bg-bgDark border-b-1 dark:border-dividerDark border-dividerLight">
+      <nav className="bg-bgLight px-4 lg:px-6 py-2.5 dark:bg-bgDark dark:border-0 dark:border-dividerDark border-dividerLight">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link href="/" className="flex items-center">
             <Logo />
@@ -248,7 +171,7 @@ export default function MainHeader() {
                 </Link>
               </li>
               <li>
-                <Tooltip className="p-0" content={<Categories />}>
+                <Tooltip className="p-0" content={<CategoriesDesktop />}>
                   <Link href="/categories" className="flex items-center gap-1">
                     <span>{lang.header.categories}</span>
                     <svg
@@ -269,7 +192,7 @@ export default function MainHeader() {
             </ul>
           </div>
           <div className="flex items-center lg:order-2">
-            <DesktopDarkmode />
+            <DarkmodeToggle />
             <ChangeLangBtn />
             <button
               data-collapse-toggle="mobile-menu-2"
@@ -319,7 +242,7 @@ export default function MainHeader() {
         onClose={onClose}
         size="full"
       >
-        <ModalContent className="md:w-[80vw] w-[85vw] h-full absolute right-0">
+        <ModalContent className="md:w-[80vw] w-[85vw] h-full absolute right-0 dark:bg-bgDark bg-bgLight">
           <ModalHeader className="p-2">
             <button onClick={() => onClose()}>
               <svg

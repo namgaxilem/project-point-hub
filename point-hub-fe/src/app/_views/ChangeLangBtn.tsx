@@ -195,7 +195,7 @@ export default function ChangeLangBtn() {
     <Dropdown>
       <DropdownTrigger>
         <Button className="flex items-center justify-center gap-2 bg-transparent p-0">
-          <span>{selectedLang?.title}</span>
+          <span className="md:text-sm text-xs">{selectedLang?.title}</span>
           <span>{selectedLang?.icon}</span>
         </Button>
       </DropdownTrigger>

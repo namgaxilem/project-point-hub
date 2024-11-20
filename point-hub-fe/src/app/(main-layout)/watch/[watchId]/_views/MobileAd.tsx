@@ -28,7 +28,7 @@ export default function MobileAd() {
             className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
           >
             <img
-              src="https://cdn77-pic.xvideos-cdn.com/videos/thumbs169/24/c5/0e/24c50e6d02cd8ae10f097911f1064024/24c50e6d02cd8ae10f097911f1064024.24.jpg"
+              src="asd"
               alt="face cream"
               className="w-full h-full aspect-square rounded object-cover"
             />
@@ -40,7 +40,7 @@ export default function MobileAd() {
             className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
           >
             <img
-              src="https://cdn77-pic.xvideos-cdn.com/videos/thumbs169/3a/55/54/3a55544fdea641913c21d16f17f0dca7/3a55544fdea641913c21d16f17f0dca7.27.jpg"
+              src="asd"
               alt="face cream"
               className="w-full h-full aspect-square rounded object-cover"
             />

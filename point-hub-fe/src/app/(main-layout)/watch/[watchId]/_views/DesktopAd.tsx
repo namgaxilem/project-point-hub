@@ -9,7 +9,7 @@ export default function DesktopAd() {
         className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
       >
         <img
-          src="https://cdn77-pic.xvideos-cdn.com/videos/thumbs169ll/78/1b/5f/781b5fd04e9f36b889174d0bf100ab09/781b5fd04e9f36b889174d0bf100ab09.16.jpg"
+          src="asd"
           alt="face cream"
           className="w-full max-w-[270px] mx-1 aspect-square rounded object-cover"
         />
@@ -27,7 +27,7 @@ export default function DesktopAd() {
         className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
       >
         <img
-          src="https://cdn77-pic.xvideos-cdn.com/videos/thumbs169ll/78/1b/5f/781b5fd04e9f36b889174d0bf100ab09/781b5fd04e9f36b889174d0bf100ab09.16.jpg"
+          src="asd"
           alt="face cream"
           className="w-full max-w-[270px] mx-1 aspect-square rounded object-cover"
         />

@@ -4,17 +4,17 @@ import Link from "next/link";
 export default function ListClip() {
   return (
     <>
-      <div className="flex flex-wrap gap-y-7">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 max-xl:gap-4 gap-6 py-[20px]">
         {Array.from({ length: 30 }, (_, index) => (
           <Link
             key={index}
             href={`/watch/${index}`}
-            className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
+            className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight overflow-hidden"
           >
             <img
-              src="https://javmost.me/wp-content/uploads/2024/11/SONE-407-400x269.jpg"
+              src="https://www.w3schools.com/html/pic_trulli.jpg"
               alt="face cream"
-              className="w-full max-w-[270px] mx-1 aspect-square rounded object-cover"
+              className="w-full aspect-square rounded object-cover"
             />
             <div className="mt-1">
               <h6 className="font-semibold text-lg leading-8 text-black dark:text-textDark transition-all duration-500 group-hover:text-indigo-600">
