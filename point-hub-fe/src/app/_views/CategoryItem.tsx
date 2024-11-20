@@ -6,7 +6,7 @@ interface Props {
 }
 export default function CategoryItem({ category }: Props) {
   return (
-    <li className="bg-[#f5f5f5] dark:bg-black rounded p-5 cursor-pointer hover:-translate-y-2 transition-all relative border dark:border-dividerDark border-dividerLight">
+    <li className="bg-[#f5f5f5] dark:bg-black rounded p-5 cursor-pointer hover:-translate-y-2 transition-all relative">
       <Link
         href={`/categories/${category.documentId}`}
         key={category.documentId}

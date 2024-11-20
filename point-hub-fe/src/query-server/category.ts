@@ -1,15 +1,12 @@
 import { BASE_API_URL } from "@/config";
 import { Category } from "@/types/Category";
+import { http } from "./http";
 
 export async function getCategories(): Promise<Category[]> {
-  const url = `${BASE_API_URL}/api/categories?locale=en`;
+  const url = `${BASE_API_URL}/api/categories`;
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-    const { data } = await response.json();
-    return data;
+    const response = await http.get(url);
+    return response;
   } catch (error) {
     console.error(error);
     return [];
