@@ -1,10 +1,14 @@
 {
-    "header": {
-      "homePage": "Trang chủ",
-      "topWatch": "Xem nhiều",
-      "categories": "Thể loại",
-      "searchHolder": "Tìm kiếm phim",
-      "searchTitle": "Tìm kiếm"
-    }
+  "header": {
+    "homePage": "Trang chủ",
+    "topWatch": "Xem nhiều",
+    "categories": "Thể loại",
+    "searchHolder": "Tìm kiếm phim",
+    "searchTitle": "Tìm kiếm"
+  },
+  "errors": {
+    "page_notfound": "Không thể tìm thấy trang này",
+    "please_go_back": "Xin vui lòng quay lại",
+    "something_wrong": "Whoops, Có lỗi xảy ra trên máy chủ của chúng tôi."
   }
-  
+}

@@ -12,3 +12,14 @@ export async function getCategories(): Promise<Category[]> {
     return [];
   }
 }
+
+export async function getCategory(id: string): Promise<Category | undefined> {
+  const url = `${BASE_API_URL}/api/categories/${id}`;
+  try {
+    const response = await http.get(url);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}

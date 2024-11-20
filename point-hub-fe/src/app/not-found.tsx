@@ -1,8 +1,12 @@
+"use client";
 import Link from "next/link";
 import MainFooter from "./_views/MainFooter";
 import MainHeader from "./_views/MainHeader";
+import { useLang } from "@/contexts";
 
 export default function Notfound() {
+  const { lang } = useLang();
+
   return (
     <>
       <MainHeader />
@@ -13,16 +17,16 @@ export default function Notfound() {
               404
             </h1>
             <p className="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white">
-              Không thể tìm thấy trang này
+              {lang.errors.page_notfound}
             </p>
             <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-              Xin vui lòng quay lại
+              {lang.errors.please_go_back}
             </p>
             <Link
               href="/"
               className="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
             >
-              Trang chủ
+              {lang.header.homePage}
             </Link>
           </div>
         </div>

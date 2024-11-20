@@ -5,5 +5,10 @@
     "categories": "Categories",
     "searchHolder": "Type to search any videos",
     "searchTitle": "Search"
+  },
+  "errors": {
+    "page_notfound": "Cannot find this page right now",
+    "please_go_back": "Please go back and try again",
+    "something_wrong": "Whoops, something went wrong on our servers."
   }
 }
