@@ -5,7 +5,6 @@ import { SITE_NAME } from "@/config";
 export default function MainFooter() {
   return (
     <footer className="bg-white shadow dark:bg-bgDark w-full">
-      <hr className="border-gray-200 sm:mx-auto dark:border-dividerDark border-dividerLight md:mb-1" />
       <div className="w-full max-w-screen-xl mx-auto md:px-10 px-5 pt-5 pb-4">
         <div className="sm:flex sm:items-center justify-center">
           <Link

@@ -15,7 +15,7 @@ import {
 } from "@nextui-org/react";
 import Link from "next/link";
 import ChangeLangBtn from "./ChangeLangBtn";
-import DesktopDarkmode from "./DarkmodeToggle";
+import DarkmodeToggle from "./DarkmodeToggle";
 import { Logo } from "./Logo";
 import { useLang } from "@/contexts";
 import { useCategories } from "@/query-client/category";
@@ -34,6 +34,7 @@ const CategoriesMobile = () => {
     </ul>
   );
 };
+
 const CategoriesDesktop = () => {
   const { data: categories } = useCategories();
 
@@ -53,7 +54,7 @@ const MobileSideMenuContent = () => {
 
   return (
     <ModalBody className="p-0">
-      <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+      <div className="h-full px-3 py-4 overflow-y-auto dark:bg-bgDark bg-bgLight">
         <ul className="space-y-2 font-medium mb-3">
           <li>
             <Link
@@ -191,7 +192,7 @@ export default function MainHeader() {
             </ul>
           </div>
           <div className="flex items-center lg:order-2">
-            <DesktopDarkmode />
+            <DarkmodeToggle />
             <ChangeLangBtn />
             <button
               data-collapse-toggle="mobile-menu-2"
@@ -241,7 +242,7 @@ export default function MainHeader() {
         onClose={onClose}
         size="full"
       >
-        <ModalContent className="md:w-[80vw] w-[85vw] h-full absolute right-0">
+        <ModalContent className="md:w-[80vw] w-[85vw] h-full absolute right-0 dark:bg-bgDark bg-bgLight">
           <ModalHeader className="p-2">
             <button onClick={() => onClose()}>
               <svg

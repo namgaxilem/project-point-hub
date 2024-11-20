@@ -14,7 +14,7 @@ export default function ListClip() {
             <img
               src="https://www.w3schools.com/html/pic_trulli.jpg"
               alt="face cream"
-              className="w-full max-w-[270px] aspect-square rounded object-cover"
+              className="w-full aspect-square rounded object-cover"
             />
             <div className="mt-1">
               <h6 className="font-semibold text-lg leading-8 text-black dark:text-textDark transition-all duration-500 group-hover:text-indigo-600">

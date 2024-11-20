@@ -1,4 +1,4 @@
-import { http } from "@/lib/http";
+import { http } from "@/query-client/http";
 import { Category } from "@/types/Category";
 import { useQuery } from "@tanstack/react-query";
 
@@ -7,7 +7,7 @@ export const useCategories = () => {
     queryKey: ["useCategories"],
     queryFn: (): Promise<Category[]> => {
       return http
-        .get<any>(`/api/categories?locale=en`)
+        .get<any>(`/api/categories`)
         .then(({ data }) => Promise.resolve(data));
     },
   });
