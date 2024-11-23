@@ -14,8 +14,6 @@ export default async function Page({
     return <CommonError />;
   }
 
-  console.log("category", category);
-
   return (
     <section className="md:py-20 py-10 dark:bg-bgDark bg-bgLight">
       <h1 className="md:container md:mx-auto px-[20px] text-center text-2xl font-bold mb-8">

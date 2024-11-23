@@ -1,1 +1,1 @@
-export type Locale = "en" | "vi-VN"
+export type Locale = "en" | "vi"

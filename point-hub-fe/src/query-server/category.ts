@@ -1,15 +1,17 @@
 import { BASE_API_URL } from "@/config";
 import { Category } from "@/types/Category";
 import { http } from "./http";
+import { ResponsePagination } from "@/types/Pagination";
 
-export async function getCategories(): Promise<Category[]> {
+export async function getCategories(): Promise<
+  ResponsePagination<Category[]> | undefined
+> {
   const url = `${BASE_API_URL}/api/categories`;
   try {
-    const response = await http.get(url);
-    return response;
+    return await http.get(url);
   } catch (error) {
     console.error(error);
-    return [];
+    return undefined;
   }
 }
 
