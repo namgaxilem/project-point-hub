@@ -9,4 +9,7 @@ export interface Category {
   locale: Locale;
   category_name: string;
   thumbnail_url: string | null;
+  videos: {
+    count: number;
+  };
 }

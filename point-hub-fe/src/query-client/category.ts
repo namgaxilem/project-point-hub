@@ -7,7 +7,7 @@ export const useCategories = () => {
     queryKey: ["useCategories"],
     queryFn: (): Promise<Category[]> => {
       return http
-        .get<any>(`/api/categories`)
+        .get<any>(`/api/all-categories-with-video-counts`)
         .then(({ data }) => Promise.resolve(data));
     },
   });

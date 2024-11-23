@@ -1,4 +1,5 @@
 {
+  "common": {},
   "header": {
     "homePage": "Trang chủ",
     "topWatch": "Xem nhiều",
@@ -10,5 +11,8 @@
     "page_notfound": "Không thể tìm thấy trang này",
     "please_go_back": "Xin vui lòng quay lại",
     "something_wrong": "Whoops, Có lỗi xảy ra trên máy chủ của chúng tôi."
+  },
+  "categoryPage": {
+    "videos": "Phim"
   }
 }

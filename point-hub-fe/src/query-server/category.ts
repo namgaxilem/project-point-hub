@@ -6,7 +6,7 @@ import { ResponsePagination } from "@/types/Pagination";
 export async function getCategories(): Promise<
   ResponsePagination<Category[]> | undefined
 > {
-  const url = `${BASE_API_URL}/api/categories`;
+  const url = `${BASE_API_URL}/api/all-categories-with-video-counts`;
   try {
     return await http.get(url);
   } catch (error) {
