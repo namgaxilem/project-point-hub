@@ -12,7 +12,6 @@ export async function getVideos(
   }&pagination[pageSize]=${size || 50}`;
   try {
     const response = await http.get(url);
-    console.log("response", response);
     return response;
   } catch (error) {
     console.error(error);

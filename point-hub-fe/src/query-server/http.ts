@@ -21,7 +21,7 @@ export const http = {
       }
       return await response.json();
     } catch (error) {
-      console.log("Error while fetching.");
+      console.error("Error while fetching.");
       throw error;
     }
   },
