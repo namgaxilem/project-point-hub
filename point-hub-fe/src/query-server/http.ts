@@ -19,10 +19,9 @@ export const http = {
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
-      const { data } = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
-      console.log("Error while fetching.");
+      console.error("Error while fetching.");
       throw error;
     }
   },

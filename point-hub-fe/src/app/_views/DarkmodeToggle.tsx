@@ -1,18 +1,22 @@
 "use client";
+
+import { PREFERED_THEME_LC_STORAGE } from "@/lib/constants";
 import { useEffect, useState } from "react";
 
 export default function DarkmodeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  const toggleDark = () => setIsDarkMode(!isDarkMode);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem(PREFERED_THEME_LC_STORAGE) !== "light");
 
   useEffect(() => {
     if (isDarkMode) {
       document.getElementsByTagName("html")[0].classList.add("dark");
+      localStorage.setItem(PREFERED_THEME_LC_STORAGE, "dark");
     } else {
       document.getElementsByTagName("html")[0].classList.remove("dark");
+      localStorage.setItem(PREFERED_THEME_LC_STORAGE, "light");
     }
   }, [isDarkMode]);
+
+  const toggleDark = () => setIsDarkMode(!isDarkMode);
 
   if (!isDarkMode) {
     return (

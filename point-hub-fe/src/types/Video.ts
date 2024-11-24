@@ -9,4 +9,11 @@ export interface Video {
   updatedAt: Date;
   publishedAt: Date;
   locale: Locale;
+
+  view_count: number;
+  view_visit: number;
+  dislike_count: number;
+  like_count: number;
+  source_video_url: string;
+  thumbnail_url: string;
 }

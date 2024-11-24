@@ -2,12 +2,12 @@ import { http } from "@/query-client/http";
 import { Category } from "@/types/Category";
 import { useQuery } from "@tanstack/react-query";
 
-export const useCategories = () => {
+export const useVideosHomePage = () => {
   return useQuery({
-    queryKey: ["useCategories"],
+    queryKey: ["useVideosHomePage"],
     queryFn: (): Promise<Category[]> => {
       return http
-        .get<any>(`/api/all-categories-with-video-counts`)
+        .get<any>(`/api/videos`)
         .then(({ data }) => Promise.resolve(data));
     },
   });
