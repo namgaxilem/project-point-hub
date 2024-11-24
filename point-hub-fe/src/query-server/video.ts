@@ -19,8 +19,12 @@ export async function getVideos(
   }
 }
 
-export async function getVideo(id: string): Promise<Video | undefined> {
-  const url = `${BASE_API_URL}/api/videos/${id}`;
+export async function getVideoByCategory(
+  categoryId: string,
+  page: number | string,
+  pageSize: number
+): Promise<ResponsePagination<Video[]> | undefined> {
+  const url = `${BASE_API_URL}/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}&filters[categories][documentId][$eq]=${categoryId}`;
   try {
     const response = await http.get(url);
     return response;

@@ -8,5 +8,5 @@ export interface Pagination {
 }
 export interface ResponsePagination<T> {
   data: T;
-  mata: Pagination;
+  meta: Pagination;
 }

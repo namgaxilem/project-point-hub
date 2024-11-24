@@ -10,7 +10,7 @@ interface Props {
 export default function CategoryItem({ category }: Props) {
   const { lang } = useLang();
   return (
-    <li className="bg-[#f5f5f5] dark:bg-black rounded cursor-pointer hover:-translate-y-2 transition-all relative">
+    <div className="bg-[#f5f5f5] dark:bg-black rounded cursor-pointer hover:-translate-y-2 transition-all relative">
       <Link
         href={`/categories/${category.documentId}`}
         key={category.documentId}
@@ -33,6 +33,6 @@ export default function CategoryItem({ category }: Props) {
           </div>
         </div>
       </Link>
-    </li>
+    </div>
   );
 }

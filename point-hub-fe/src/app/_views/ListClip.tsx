@@ -1,13 +1,22 @@
+"use client";
+
+import { useLang } from "@/contexts";
+import { Pagination as PaginationType } from "@/types/Pagination";
 import { Video } from "@/types/Video";
 import { Pagination } from "@nextui-org/react";
 import Link from "next/link";
+import PaginationItem from "./PaginationItem";
+import EmptyVideos from "./EmptyVideos";
 
 interface Props {
   videos?: Video[];
+  pagination?: PaginationType;
 }
-export default function ListClip({ videos }: Props) {
+export default function ListClip({ videos, pagination }: Props) {
+  const { lang } = useLang();
+
   if (!videos || videos.length <= 0) {
-    return <>ko cos j</>;
+    return <EmptyVideos />;
   }
 
   return (
@@ -29,7 +38,7 @@ export default function ListClip({ videos }: Props) {
                 {video.title}
               </h6>
               <p className="font-normal text-xs text-gray-500">
-                {video.view_count} luot xem
+                {video.view_count || 0} {lang.videoPage.viewCount}
               </p>
             </div>
           </Link>
@@ -37,7 +46,14 @@ export default function ListClip({ videos }: Props) {
       </div>
 
       <div className="flex justify-center items-center mt-10">
-        <Pagination isCompact showControls total={10} initialPage={1} />
+        <Pagination
+          isCompact
+          showControls={false}
+          total={pagination?.pagination?.total || 0}
+          page={pagination?.pagination?.page}
+          initialPage={1}
+          renderItem={PaginationItem}
+        />
       </div>
     </>
   );

@@ -8,10 +8,8 @@ interface Props {
     page?: number;
     pageSize?: number;
   };
-  searchParams: any;
 }
-export default async function Page({ params, searchParams }: Props) {
-  console.log("params", await searchParams);
+export default async function Page({ params }: Props) {
   const res = await getVideos(params.page, params.pageSize);
 
   return (

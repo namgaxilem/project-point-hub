@@ -18,8 +18,8 @@ export async function getCategories(): Promise<
 export async function getCategory(id: string): Promise<Category | undefined> {
   const url = `${BASE_API_URL}/api/categories/${id}`;
   try {
-    const response = await http.get(url);
-    return response;
+    const { data } = await http.get(url);
+    return data;
   } catch (error) {
     console.error(error);
     return undefined;

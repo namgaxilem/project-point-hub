@@ -10,9 +10,14 @@
   "errors": {
     "page_notfound": "Cannot find this page right now",
     "please_go_back": "Please go back and try again",
-    "something_wrong": "Whoops, something went wrong on our servers."
+    "something_wrong": "Whoops, something went wrong on our servers.",
+    "noVideoFound": "There are no videos found."
   },
   "categoryPage": {
-    "videos": "Videos"
+    "videos": "Videos",
+    "searchCategoryHolder": "Type to search category"
+  },
+  "videoPage": {
+    "viewCount": "views"
   }
 }

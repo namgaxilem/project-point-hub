@@ -1,14 +1,23 @@
 import CommonError from "@/app/_views/CommonError";
 import ListClip from "@/app/_views/ListClip";
 import { getCategory } from "@/query-server/category";
+import { getVideoByCategory } from "@/query-server/video";
 
-export default async function Page({
-  params,
-}: {
+interface Props {
   params: Promise<{ categoryId: string }>;
-}) {
+  searchParams: Promise<{ page: string }>;
+}
+export default async function Page({ params, searchParams }: Props) {
   const { categoryId } = await params;
-  const category = await getCategory(categoryId);
+  const { page } = await searchParams;
+  const [categoryPromise, videosPromise] = await Promise.allSettled([
+    getCategory(categoryId),
+    getVideoByCategory(categoryId, page || 1, 10),
+  ]);
+  const category =
+    categoryPromise.status === "fulfilled" ? categoryPromise.value : null;
+  const videos =
+    videosPromise.status === "fulfilled" ? videosPromise.value : null;
 
   if (!category) {
     return <CommonError />;
@@ -20,7 +29,7 @@ export default async function Page({
         {category.category_name}
       </h1>
       <div className="md:container md:mx-auto px-[20px]">
-        <ListClip />
+        <ListClip videos={videos?.data} pagination={videos?.meta} />
       </div>
     </section>
   );
