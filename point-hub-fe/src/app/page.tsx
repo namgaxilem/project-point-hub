@@ -4,13 +4,14 @@ import ListClip from "./_views/ListClip";
 import { getVideos } from "@/query-server/video";
 
 interface Props {
-  params: {
+  params: Promise<{
     page?: number;
     pageSize?: number;
-  };
+  }>;
 }
 export default async function Page({ params }: Props) {
-  const res = await getVideos(params.page, params.pageSize);
+  const param = await params;
+  const res = await getVideos(param.page, param.pageSize);
 
   return (
     <>
