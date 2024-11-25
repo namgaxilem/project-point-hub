@@ -3,6 +3,7 @@ module.exports = {
     {
       name: "point-hub-strapi",
       cwd: "/home/namgaxilem/project-point-hub/point-hub-strapi",
+      interpreter: '/bin/bash',
       script: "yarn",
       args: "start",
       env: {
