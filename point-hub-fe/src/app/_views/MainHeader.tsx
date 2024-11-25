@@ -10,19 +10,28 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
+  Spinner,
   Tooltip,
   useDisclosure,
 } from "@nextui-org/react";
 import Link from "next/link";
 import ChangeLangBtn from "./ChangeLangBtn";
-import DarkmodeToggle from "./DarkmodeToggle";
 import { Logo } from "./Logo";
 import { useLang } from "@/contexts";
 import { useCategories } from "@/query-client/category";
 import CategoryItem from "./CategoryItem";
+import dynamic from "next/dynamic";
+
+const DarkmodeToggle = dynamic(() => import("./DarkmodeToggle"), {
+  ssr: false,
+});
 
 const CategoriesMobile = () => {
-  const { data: categories } = useCategories();
+  const { data: categories, isLoading } = useCategories();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6 p-[5px]">
@@ -36,7 +45,11 @@ const CategoriesMobile = () => {
 };
 
 const CategoriesDesktop = () => {
-  const { data: categories } = useCategories();
+  const { data: categories, isLoading } = useCategories();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6 p-[20px]">
