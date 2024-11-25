@@ -1,61 +1,64 @@
-# 🚀 Getting started with Strapi
+https://strapi.io/integrations/azure
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
-
-### `develop`
-
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
-```
-npm run develop
-# or
-yarn develop
-```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+**Required packages/software**
+- nodejs
+- pm2: ecosystem.config.js
+- nginx: nginx.conf
+- yarn
+- git
 
 ```
-npm run start
-# or
-yarn start
+sudo apt update
+sudo apt upgrade -y
+
+pm2 init
+pm2 start ecosystem.config.js
 ```
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
+#### How to use pm2 to run strapi 
 ```
-npm run build
-# or
-yarn build
+pm2 startup systemd
 ```
 
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+#### How to config nginx
+1. Install Certbot
 
 ```
-yarn strapi deploy
+sudo apt update
+sudo apt install certbot python3-certbot-nginx nginx
 ```
 
-## 📚 Learn more
+2. Obtain SSL Cert
+https://certbot.eff.org/instructions?ws=nginx&os=snap
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+```
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot --nginx -d strapi.javtophd.online
+sudo nginx -t
+```
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+3. Next, create a new Nginx configuration file for your Strapi app
+```
+sudo nano /etc/nginx/sites-available/strapi
+```
 
-## ✨ Community
+4. Create nginx.conf file
+```
+Pass the content of nginx.conf to this file
+```
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+5. Enable the Nginx Configuration
+```
+sudo ln -s /etc/nginx/sites-available/strapi /etc/nginx/sites-enabled/
+```
 
----
+6. Test Nginx Configuration
+```
+sudo nginx -t
+```
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+7. If everything okay, start nginx:
+```
+sudo systemctl restart nginx
+```
