@@ -18,6 +18,7 @@
     "searchCategoryHolder": "Type to search category"
   },
   "videoPage": {
-    "viewCount": "views"
+    "viewCount": "views",
+    "videoSuggestTitle": "Suggestion videos"
   }
 }

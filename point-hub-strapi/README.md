@@ -34,7 +34,7 @@ https://certbot.eff.org/instructions?ws=nginx&os=snap
 ```
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
-sudo certbot --nginx -d strapi.javtophd.online
+sudo certbot --nginx -d strapi.avmost.org
 sudo nginx -t
 ```
 

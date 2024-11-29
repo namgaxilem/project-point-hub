@@ -18,6 +18,7 @@
     "searchCategoryHolder": "Tìm kiếm thể loại"
   },
   "videoPage": {
-    "viewCount": "Lượt xem"
+    "viewCount": "Lượt xem",
+    "videoSuggestTitle": "Đề xuất cho bạn"
   }
 }

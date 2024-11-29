@@ -78,6 +78,7 @@ class PointHubCrawlerDownloaderMiddleware:
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
+        print("===== process_request")
         return None
 
     def process_response(self, request, response, spider):
@@ -87,6 +88,7 @@ class PointHubCrawlerDownloaderMiddleware:
         # - return a Response object
         # - return a Request object
         # - or raise IgnoreRequest
+        print("===== process_response")
         return response
 
     def process_exception(self, request, exception, spider):
