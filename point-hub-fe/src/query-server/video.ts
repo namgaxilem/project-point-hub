@@ -33,3 +33,16 @@ export async function getVideoByCategory(
     return undefined;
   }
 }
+
+export async function getVideoDetail(
+  videoId: string
+): Promise<Video | undefined> {
+  const url = `${BASE_API_URL}/api/videos/${videoId}`;
+  try {
+    const { data } = await http.get(url);
+    return data;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}

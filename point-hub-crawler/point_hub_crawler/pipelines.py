@@ -10,4 +10,5 @@ from itemadapter import ItemAdapter
 
 class PointHubCrawlerPipeline:
     def process_item(self, item, spider):
+        print("123123dutme pipeline")
         return item

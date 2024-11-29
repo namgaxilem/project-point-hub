@@ -1,47 +1,26 @@
 "use client";
 
+import { Video } from "@/types/Video";
 import { Chip } from "@nextui-org/react";
-import VideoJS from "./VideoJS";
-import videojs from "video.js";
 import React from "react";
+import HlsJS from "./HlsJS";
 
-export default function VideoPlayer() {
-  const playerRef = React.useRef(null);
-
-  const videoJsOptions = {
-    autoplay: true,
-    controls: true,
-    responsive: true,
-    fluid: true,
-    sources: [
-      {
-        src: "https://www.w3schools.com/html/mov_bbb.mp4",
-        type: "video/mp4",
-      },
-    ],
-  };
-
-  const handlePlayerReady = (player) => {
-    playerRef.current = player;
-
-    // You can handle player events here, for example:
-    player.on("waiting", () => {
-      videojs.log("player is waiting");
-    });
-
-    player.on("dispose", () => {
-      videojs.log("player will dispose");
-    });
-  };
+interface Props {
+  video?: Video;
+}
+export default function VideoPlayer({ video }: Props) {
+  if (!video) {
+    return <>deo xem duoc</>;
+  }
 
   return (
-    <div className="grow">
-      {/* <div className="flex items-center gap-1 flex-wrap"> */}
-      <h1 className="text-2xl mt-5">
-        Ưng Hoàng Phúc - Những Bản Hits 8X9X Được Khán Giả Yêu Thích Nhất{" "}
-        <Chip className="rounded">6 min</Chip>
+    <div className="flex flex-wrap flex-col justify-between items-start mx-auto max-w-screen-xl px-[16px] md:p-0">
+      <h1 className="text-2xl mt-5 flex items-center">
+        {video.title}
+        <Chip className="rounded ml-3" size="sm">
+          6 min
+        </Chip>
       </h1>
-      {/* </div> */}
       <div className="flex items-center gap-2 mt-4">
         <Chip className="rounded" size="sm">
           latina
@@ -57,8 +36,8 @@ export default function VideoPlayer() {
         </Chip>
       </div>
 
-      <section>
-        <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+      <section className="w-full mt-3">
+        <HlsJS m3u8Url={video.source_video_url} />
       </section>
     </div>
   );
