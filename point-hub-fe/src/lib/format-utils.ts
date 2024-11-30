@@ -15,6 +15,7 @@ export function formatNumberThousandDeliminator(
 
     return formattedNumber;
   } catch (err) {
-    return '0';
+    console.warn("formatNumberThousandDeliminator", err);
+    return "0";
   }
 }

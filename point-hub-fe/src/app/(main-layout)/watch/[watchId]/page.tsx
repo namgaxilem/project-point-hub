@@ -1,15 +1,12 @@
+import { SITE_DOMAIN, SITE_NAME } from "@/config";
 import { getVideoDetail } from "@/query-server/video";
+import { Video } from "@/types/Video";
+import { Metadata } from "next";
+import VideoNotFound from "./_views/VideoNotFound";
 import VideoPlayer from "./_views/VideoPlayer";
 import VideoSuggestion from "./_views/VideoSuggestion";
-import { Video } from "@/types/Video";
-import { Metadata, ResolvingMetadata } from "next";
-import { SITE_DOMAIN, SITE_NAME } from "@/config";
-import VideoNotFound from "./_views/VideoNotFound";
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const watchId = (await params).watchId;
   const video: Video | undefined = await getVideoDetail(watchId);
 

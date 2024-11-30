@@ -15,7 +15,7 @@ export default function VideoPlayer({ video }: Props) {
   const { lang } = useLang();
 
   if (!video) {
-    return <>Can't play right now</>;
+    return <>Cant play right now</>;
   }
 
   return (
