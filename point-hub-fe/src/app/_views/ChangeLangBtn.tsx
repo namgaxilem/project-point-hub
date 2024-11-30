@@ -24,8 +24,8 @@ const lang_list: lang_onj[] = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
+        width="24"
+        height="24"
         viewBox="0 0 32 32"
       >
         <rect
@@ -59,8 +59,8 @@ const lang_list: lang_onj[] = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
+        width="24"
+        height="24"
         viewBox="0 0 32 32"
       >
         <rect
@@ -195,7 +195,7 @@ export default function ChangeLangBtn() {
     <Dropdown>
       <DropdownTrigger>
         <Button className="flex items-center justify-center gap-2 bg-transparent p-0">
-          <span className="md:text-sm text-xs">{selectedLang?.title}</span>
+          <span className="text-xs">{selectedLang?.title}</span>
           <span>{selectedLang?.icon}</span>
         </Button>
       </DropdownTrigger>

@@ -19,6 +19,8 @@
   },
   "videoPage": {
     "viewCount": "views",
-    "videoSuggestTitle": "Suggestion videos"
+    "videoSuggestTitle": "Suggestion videos",
+    "noSuggestVideo": "No suggest videos",
+    "actors": "Actors"
   }
 }

@@ -1,4 +1,7 @@
+import { Actor } from "./Actor";
+import { Category } from "./Category";
 import { Locale } from "./Locale";
+import { Tag } from "./Tag";
 
 export interface Video {
   id: number;
@@ -16,4 +19,8 @@ export interface Video {
   like_count: number;
   source_video_url: string;
   thumbnail_url: string;
+
+  tags: Tag[];
+  categories: Category[];
+  actors: Actor[];
 }

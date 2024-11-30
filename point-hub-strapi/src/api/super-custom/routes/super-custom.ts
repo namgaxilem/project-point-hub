@@ -9,5 +9,14 @@ export default {
         middlewares: [],
       },
     },
+    {
+      method: "GET",
+      path: "/top-watches",
+      handler: "super-custom.getTopWatchesVideo",
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
   ],
 };

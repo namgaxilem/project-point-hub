@@ -37,7 +37,7 @@ export async function getVideoByCategory(
 export async function getVideoDetail(
   videoId: string
 ): Promise<Video | undefined> {
-  const url = `${BASE_API_URL}/api/videos/${videoId}`;
+  const url = `${BASE_API_URL}/api/videos/${videoId}?populate=tags&populate=categories&populate=actors`;
   try {
     const { data } = await http.get(url);
     return data;
