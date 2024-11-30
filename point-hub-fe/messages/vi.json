@@ -19,6 +19,8 @@
   },
   "videoPage": {
     "viewCount": "Lượt xem",
-    "videoSuggestTitle": "Đề xuất cho bạn"
+    "videoSuggestTitle": "Đề xuất cho bạn",
+    "noSuggestVideo": "Không có video đề xuất",
+    "actors": "Diễn viên"
   }
 }

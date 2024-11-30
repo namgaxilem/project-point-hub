@@ -1,16 +1,20 @@
 export function formatNumberThousandDeliminator(
   num: number | string,
   isClearBeforeFormat?: boolean
-) {
-  const cleanNumber = isClearBeforeFormat
-    ? num.toString().replaceAll(",", "")
-    : num;
+): string {
+  try {
+    const cleanNumber = isClearBeforeFormat
+      ? num.toString().replaceAll(",", "")
+      : Number(num);
 
-  // Convert the number to a string and remove any decimal places
-  const numString = parseFloat(`${cleanNumber}`).toFixed(0);
+    // Convert the number to a string and remove any decimal places
+    const numString = parseFloat(`${cleanNumber}`).toFixed(0);
 
-  // Add commas for thousands separators using a regular expression
-  const formattedNumber = numString.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // Add commas for thousands separators using a regular expression
+    const formattedNumber = numString.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-  return formattedNumber;
+    return formattedNumber;
+  } catch (err) {
+    return '0';
+  }
 }

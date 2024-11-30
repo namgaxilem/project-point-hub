@@ -125,7 +125,7 @@ export default function MainHeader() {
 
   return (
     <header>
-      <nav className="bg-bgLight px-4 lg:px-6 py-2.5 dark:bg-bgDark dark:border-0 dark:border-dividerDark border-dividerLight">
+      <nav className="bg-bgLight px-4 lg:px-6 py-2.5 dark:bg-bgDark dark:border-0 dark:border-dividerDark border-dividerLight md:pr-4 pr-0">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link href="/" className="flex items-center">
             <Logo />
