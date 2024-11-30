@@ -17,13 +17,13 @@ export default function VideoSuggestion({ video }: Props) {
   const [pagination, setPagination] = useState<PaginationType | undefined>({
     pagination: {
       page: 1,
-      pageSize: 1,
+      pageSize: 15,
       total: 0,
     },
   });
   const { data, refetch } = useVideosSuggestion(
     pagination?.pagination?.page || 1,
-    pagination?.pagination?.pageSize || 1,
+    pagination?.pagination?.pageSize || 15,
     {
       categories: video?.categories,
       tags: video?.tags,
@@ -77,12 +77,16 @@ export default function VideoSuggestion({ video }: Props) {
         <Pagination
           showControls
           isCompact
+          color="warning"
           initialPage={1}
           page={pagination?.pagination?.page}
           total={pagination?.pagination?.total || 0}
-          onChange={(e) =>
-            setPagination({ pagination: { ...pagination, page: e } })
-          }
+          onChange={(page) => {
+            setPagination({
+              ...pagination,
+              pagination: { ...pagination?.pagination, page },
+            });
+          }}
         />
       </div>
     </div>
