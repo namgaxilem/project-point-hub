@@ -24,6 +24,7 @@ export default function VideoSuggestion({ video }: Props) {
   const { data, refetch } = useVideosSuggestion(
     pagination?.pagination?.page || 1,
     pagination?.pagination?.pageSize || 15,
+    video?.documentId || "",
     {
       categories: video?.categories,
       tags: video?.tags,

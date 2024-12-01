@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 export const useVideosSuggestion = (
   page: number,
   pageSize: number,
+  videoId: string,
   relations?: {
     categories?: Category[];
     tags?: Tag[];
@@ -20,8 +21,9 @@ export const useVideosSuggestion = (
     queryKey: ["useVideosSuggestion"],
     queryFn: (): Promise<ResponsePagination<Video[]> | undefined> => {
       return http.get<ResponsePagination<Video[]> | undefined>(
-        `/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}` +
-          videoSuggestQueryBuilder(relations || {})
+        `/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}${videoSuggestQueryBuilder(
+          relations || {}
+        )}&filters[$and][0][documentId][$not][$eq]=${videoId}`
       );
     },
   });
