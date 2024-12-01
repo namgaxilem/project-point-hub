@@ -27,7 +27,11 @@ const DarkmodeToggle = dynamic(() => import("./DarkmodeToggle"), {
   ssr: false,
 });
 
-const CategoriesMobile = () => {
+const CategoriesMobile = ({
+  onCloseMobileMenu,
+}: {
+  onCloseMobileMenu: () => void;
+}) => {
   const { data: categories, isLoading } = useCategories();
 
   if (isLoading) {
@@ -37,7 +41,7 @@ const CategoriesMobile = () => {
   return (
     <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6 p-[5px]">
       {categories?.map((cate) => (
-        <li key={cate.documentId}>
+        <li key={cate.documentId} onClick={onCloseMobileMenu}>
           <CategoryItem category={cate} />
         </li>
       ))}
@@ -63,7 +67,11 @@ const CategoriesDesktop = () => {
   );
 };
 
-const MobileSideMenuContent = () => {
+const MobileSideMenuContent = ({
+  onCloseMobileMenu,
+}: {
+  onCloseMobileMenu: () => void;
+}) => {
   const { lang } = useLang();
 
   return (
@@ -74,6 +82,7 @@ const MobileSideMenuContent = () => {
             <Link
               href="/top-watches"
               className="flex items-center py-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              onClick={onCloseMobileMenu}
             >
               <span className="flex-1 ms-3 whitespace-nowrap">
                 {lang.header.topWatch}
@@ -89,6 +98,7 @@ const MobileSideMenuContent = () => {
                   <Link
                     href="/categories"
                     className="flex items-center py-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    onClick={onCloseMobileMenu}
                   >
                     <span className="flex-1 ms-3 whitespace-nowrap">
                       {lang.header.categories}
@@ -97,7 +107,7 @@ const MobileSideMenuContent = () => {
                 </li>
               }
             >
-              <CategoriesMobile />
+              <CategoriesMobile onCloseMobileMenu={onCloseMobileMenu} />
             </AccordionItem>
           </Accordion>
         </ul>
@@ -112,6 +122,10 @@ export default function MainHeader() {
 
   const onOpenMobileMenu = () => {
     onOpen();
+  };
+
+  const onCloseMobileMenu = () => {
+    onClose();
   };
 
   return (
@@ -245,7 +259,7 @@ export default function MainHeader() {
       >
         <ModalContent className="md:w-[80vw] w-[85vw] h-full absolute right-0 dark:bg-bgDark bg-bgLight">
           <ModalHeader className="p-2">
-            <button onClick={() => onClose()}>
+            <button onClick={onCloseMobileMenu}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -264,11 +278,12 @@ export default function MainHeader() {
             <Link
               href="/"
               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              onClick={onCloseMobileMenu}
             >
               <Logo />
             </Link>
           </ModalHeader>
-          <MobileSideMenuContent />
+          <MobileSideMenuContent onCloseMobileMenu={onCloseMobileMenu} />
           <ModalFooter className="flex-col px-2 py-5">
             <Input
               isClearable
