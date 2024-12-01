@@ -1,7 +1,7 @@
-import MainFooter from "@/app/_views/MainFooter";
-import MainHeader from "@/app/_views/MainHeader";
-import ListClip from "./_views/ListClip";
-import { getVideos } from "@/query-server/video";
+import MainFooter from '@/app/_views/MainFooter';
+import MainHeader from '@/app/_views/MainHeader';
+import ListClip from './_views/ListClip';
+import { getVideos } from '@/query-server/video';
 
 interface Props {
   params: Promise<{

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { SearchIcon } from "@/icons/SearchIcon";
+import { SearchIcon } from '@/icons/SearchIcon';
 import {
   Accordion,
   AccordionItem,
@@ -13,26 +13,22 @@ import {
   Spinner,
   Tooltip,
   useDisclosure,
-} from "@nextui-org/react";
-import Link from "next/link";
-import ChangeLangBtn from "./ChangeLangBtn";
-import { Logo } from "./Logo";
-import { useLang } from "@/contexts";
-import { useCategories } from "@/query-client/category";
-import CategoryItem from "./CategoryItem";
-import dynamic from "next/dynamic";
-import ChangeGenderBtn from "./ChangeGenderBtn";
-import { usePathname } from "next/navigation";
+} from '@nextui-org/react';
+import Link from 'next/link';
+import ChangeLangBtn from './ChangeLangBtn';
+import { Logo } from './Logo';
+import { useLang } from '@/contexts';
+import { useCategories } from '@/query-client/category';
+import CategoryItem from './CategoryItem';
+import dynamic from 'next/dynamic';
+import ChangeGenderBtn from './ChangeGenderBtn';
+import { usePathname } from 'next/navigation';
 
-const DarkmodeToggle = dynamic(() => import("./DarkmodeToggle"), {
+const DarkmodeToggle = dynamic(() => import('./DarkmodeToggle'), {
   ssr: false,
 });
 
-const CategoriesMobile = ({
-  onCloseMobileMenu,
-}: {
-  onCloseMobileMenu: () => void;
-}) => {
+const CategoriesMobile = ({ onCloseMobileMenu }: { onCloseMobileMenu: () => void }) => {
   const { data: categories, isLoading } = useCategories();
 
   if (isLoading) {
@@ -68,11 +64,7 @@ const CategoriesDesktop = () => {
   );
 };
 
-const MobileSideMenuContent = ({
-  onCloseMobileMenu,
-}: {
-  onCloseMobileMenu: () => void;
-}) => {
+const MobileSideMenuContent = ({ onCloseMobileMenu }: { onCloseMobileMenu: () => void }) => {
   const { lang } = useLang();
   const pathname = usePathname();
 
@@ -84,35 +76,31 @@ const MobileSideMenuContent = ({
             <Link
               href="/top-watches"
               className={`flex items-center py-2 ${
-                pathname.includes("top-watches")
-                  ? "text-primary-500 dark:text-primary-500 font-bold"
-                  : "text-black dark:text-white"
+                pathname.includes('top-watches')
+                  ? 'text-primary-500 dark:text-primary-500 font-bold'
+                  : 'text-black dark:text-white'
               }`}
               onClick={onCloseMobileMenu}
             >
-              <span className="flex-1 ms-3 whitespace-nowrap">
-                {lang.header.topWatch}
-              </span>
+              <span className="flex-1 ms-3 whitespace-nowrap">{lang.header.topWatch}</span>
             </Link>
           </li>
-          <Accordion isCompact defaultExpandedKeys={["1"]} className="p-0 m-0">
+          <Accordion isCompact defaultExpandedKeys={['1']} className="p-0 m-0">
             <AccordionItem
-              key={"1"}
+              key={'1'}
               className="p-0 m-0"
               title={
                 <li>
                   <Link
                     href="/categories"
                     className={`flex items-center py-1 rounded-lg ${
-                      pathname.includes("categories")
-                        ? "text-primary-500 dark:text-primary-500 font-bold"
-                        : "text-black dark:text-white"
+                      pathname.includes('categories')
+                        ? 'text-primary-500 dark:text-primary-500 font-bold'
+                        : 'text-black dark:text-white'
                     }`}
                     onClick={onCloseMobileMenu}
                   >
-                    <span className="flex-1 ms-3 whitespace-nowrap">
-                      {lang.header.categories}
-                    </span>
+                    <span className="flex-1 ms-3 whitespace-nowrap">{lang.header.categories}</span>
                   </Link>
                 </li>
               }
@@ -159,9 +147,9 @@ export default function MainHeader() {
                   <Link
                     href="/categories"
                     className={`flex items-center gap-1 ${
-                      pathname.includes("categories")
-                        ? "text-primary-500 dark:text-primary-500 font-bold"
-                        : "text-black dark:text-white"
+                      pathname.includes('categories')
+                        ? 'text-primary-500 dark:text-primary-500 font-bold'
+                        : 'text-black dark:text-white'
                     }`}
                   >
                     <span>{lang.header.categories}</span>
@@ -184,9 +172,9 @@ export default function MainHeader() {
                 <Link
                   href="/top-watches"
                   className={`block py-2 pr-4 pl-3 lg:p-0  hover:text-primary-500 ${
-                    pathname.includes("top-watches")
-                      ? "text-primary-500 dark:text-primary-500 font-bold"
-                      : "text-black dark:text-white"
+                    pathname.includes('top-watches')
+                      ? 'text-primary-500 dark:text-primary-500 font-bold'
+                      : 'text-black dark:text-white'
                   }`}
                 >
                   {lang.header.topWatch}
@@ -197,24 +185,24 @@ export default function MainHeader() {
                   isClearable
                   radius="lg"
                   classNames={{
-                    label: "text-black/50 dark:text-white/90",
+                    label: 'text-black/50 dark:text-white/90',
                     input: [
-                      "bg-transparent",
-                      "text-black/90 dark:text-white/90",
-                      "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+                      'bg-transparent',
+                      'text-black/90 dark:text-white/90',
+                      'placeholder:text-default-700/50 dark:placeholder:text-white/60',
                     ],
-                    innerWrapper: "bg-transparent",
+                    innerWrapper: 'bg-transparent',
                     inputWrapper: [
-                      "shadow-xl",
-                      "bg-default-200/50",
-                      "dark:bg-default/60",
-                      "backdrop-blur-xl",
-                      "backdrop-saturate-200",
-                      "hover:bg-default-200/70",
-                      "dark:hover:bg-default/70",
-                      "group-data-[focus=true]:bg-default-200/50",
-                      "dark:group-data-[focus=true]:bg-default/60",
-                      "!cursor-text",
+                      'shadow-xl',
+                      'bg-default-200/50',
+                      'dark:bg-default/60',
+                      'backdrop-blur-xl',
+                      'backdrop-saturate-200',
+                      'hover:bg-default-200/70',
+                      'dark:hover:bg-default/70',
+                      'group-data-[focus=true]:bg-default-200/50',
+                      'dark:group-data-[focus=true]:bg-default/60',
+                      '!cursor-text',
                     ],
                   }}
                   placeholder={lang.header.searchHolder}
@@ -290,11 +278,7 @@ export default function MainHeader() {
                 stroke="currentColor"
                 className="size-6"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18 18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button>
             <Link
@@ -312,24 +296,24 @@ export default function MainHeader() {
               label={lang.header.searchTitle}
               radius="lg"
               classNames={{
-                label: "text-black/50 dark:text-white/90",
+                label: 'text-black/50 dark:text-white/90',
                 input: [
-                  "bg-transparent",
-                  "text-black/90 dark:text-white/90",
-                  "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+                  'bg-transparent',
+                  'text-black/90 dark:text-white/90',
+                  'placeholder:text-default-700/50 dark:placeholder:text-white/60',
                 ],
-                innerWrapper: "bg-transparent",
+                innerWrapper: 'bg-transparent',
                 inputWrapper: [
-                  "shadow-xl",
-                  "bg-default-200/50",
-                  "dark:bg-default/60",
-                  "backdrop-blur-xl",
-                  "backdrop-saturate-200",
-                  "hover:bg-default-200/70",
-                  "dark:hover:bg-default/70",
-                  "group-data-[focus=true]:bg-default-200/50",
-                  "dark:group-data-[focus=true]:bg-default/60",
-                  "!cursor-text",
+                  'shadow-xl',
+                  'bg-default-200/50',
+                  'dark:bg-default/60',
+                  'backdrop-blur-xl',
+                  'backdrop-saturate-200',
+                  'hover:bg-default-200/70',
+                  'dark:hover:bg-default/70',
+                  'group-data-[focus=true]:bg-default-200/50',
+                  'dark:group-data-[focus=true]:bg-default/60',
+                  '!cursor-text',
                 ],
               }}
               placeholder={lang.header.searchHolder}

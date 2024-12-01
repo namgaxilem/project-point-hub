@@ -1,10 +1,6 @@
 export default ({ className }: { className?: string }) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 777 480"
-      className={className}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 777 480" className={className}>
       <path fill="#770088" d="M0 0h777v480H0z" />
       <path fill="#004CFF" d="M0 0h777v400H0z" />
       <path fill="#028121" d="M0 0h777v320H0z" />

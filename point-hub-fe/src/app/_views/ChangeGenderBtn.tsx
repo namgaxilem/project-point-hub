@@ -1,13 +1,8 @@
-import { useLang } from "@/contexts";
-import LGBTIcon from "@/icons/LGBTIcon";
-import StraightIcon from "@/icons/StraightIcon";
-import TransFemaleIcon from "@/icons/TransFemaleIcon";
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/react";
+import { useLang } from '@/contexts';
+import LGBTIcon from '@/icons/LGBTIcon';
+import StraightIcon from '@/icons/StraightIcon';
+import TransFemaleIcon from '@/icons/TransFemaleIcon';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
 
 export default function ChangeGenderBtn() {
   const { lang } = useLang();

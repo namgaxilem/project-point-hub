@@ -1,10 +1,10 @@
-import { SITE_DOMAIN, SITE_NAME } from "@/config";
-import { getVideoDetail } from "@/query-server/video";
-import { Video } from "@/types/Video";
-import { Metadata } from "next";
-import VideoNotFound from "./_views/VideoNotFound";
-import VideoPlayer from "./_views/VideoPlayer";
-import VideoSuggestion from "./_views/VideoSuggestion";
+import { SITE_DOMAIN, SITE_NAME } from '@/config';
+import { getVideoDetail } from '@/query-server/video';
+import { Video } from '@/types/Video';
+import { Metadata } from 'next';
+import VideoNotFound from './_views/VideoNotFound';
+import VideoPlayer from './_views/VideoPlayer';
+import VideoSuggestion from './_views/VideoSuggestion';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const watchId = (await params).watchId;
@@ -16,12 +16,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${video?.title} | ${SITE_NAME}`,
       description: video?.description,
-      type: "website",
+      type: 'website',
       url: `https:/${SITE_DOMAIN}/watch/${watchId}`,
       images: [
         {
-          url: video?.thumbnail_url || "",
-          secureUrl: video?.thumbnail_url || "",
+          url: video?.thumbnail_url || '',
+          secureUrl: video?.thumbnail_url || '',
         },
       ],
     },

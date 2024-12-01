@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useLang } from "@/contexts";
-import { useVideosSuggestion } from "@/query-client/video";
-import { Pagination as PaginationType } from "@/types/Pagination";
-import { Video } from "@/types/Video";
-import { Pagination } from "@nextui-org/react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useLang } from '@/contexts';
+import { useVideosSuggestion } from '@/query-client/video';
+import { Pagination as PaginationType } from '@/types/Pagination';
+import { Video } from '@/types/Video';
+import { Pagination } from '@nextui-org/react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface Props {
   video?: Video;
@@ -24,7 +24,7 @@ export default function VideoSuggestion({ video }: Props) {
   const { data, refetch } = useVideosSuggestion(
     pagination?.pagination?.page || 1,
     pagination?.pagination?.pageSize || 15,
-    video?.documentId || "",
+    video?.documentId || '',
     {
       categories: video?.categories,
       tags: video?.tags,
@@ -43,9 +43,7 @@ export default function VideoSuggestion({ video }: Props) {
 
   return (
     <div className="flex flex-wrap flex-col justify-between items-center mx-auto max-w-screen-xl px-[16px] md:p-0">
-      <p className="text-2xl text-center mb-5 mt-10">
-        {lang.videoPage.videoSuggestTitle}
-      </p>
+      <p className="text-2xl text-center mb-5 mt-10">{lang.videoPage.videoSuggestTitle}</p>
 
       {(!suggestVideos || suggestVideos.length <= 0) && (
         <p className="text-center">{lang.videoPage.noSuggestVideo}</p>

@@ -1,7 +1,7 @@
-import { Actor } from "./Actor";
-import { Category } from "./Category";
-import { Locale } from "./Locale";
-import { Tag } from "./Tag";
+import { Actor } from './Actor';
+import { Category } from './Category';
+import { Locale } from './Locale';
+import { Tag } from './Tag';
 
 export interface Video {
   id: number;

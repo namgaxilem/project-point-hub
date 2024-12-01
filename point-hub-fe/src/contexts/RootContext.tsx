@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { NextUIProvider } from "@nextui-org/react";
-import LangProvider from "./LangContext";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { NextUIProvider } from '@nextui-org/react';
+import LangProvider from './LangContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient({
   defaultOptions: {

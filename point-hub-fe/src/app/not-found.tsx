@@ -1,8 +1,8 @@
-"use client";
-import Link from "next/link";
-import MainFooter from "./_views/MainFooter";
-import MainHeader from "./_views/MainHeader";
-import { useLang } from "@/contexts";
+'use client';
+import Link from 'next/link';
+import MainFooter from './_views/MainFooter';
+import MainHeader from './_views/MainHeader';
+import { useLang } from '@/contexts';
 
 export default function Notfound() {
   const { lang } = useLang();
