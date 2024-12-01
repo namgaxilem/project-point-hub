@@ -1,15 +1,15 @@
-import { BASE_API_URL } from "@/config";
-import { Video } from "@/types/Video";
-import { http } from "./http";
-import { ResponsePagination } from "@/types/Pagination";
+import { BASE_API_URL } from '@/config';
+import { Video } from '@/types/Video';
+import { http } from './http';
+import { ResponsePagination } from '@/types/Pagination';
 
 export async function getVideos(
   page?: number,
   size?: number
 ): Promise<ResponsePagination<Video[]> | undefined> {
-  const url = `${BASE_API_URL}/api/videos?pagination[page]=${
-    page || 1
-  }&pagination[pageSize]=${size || 50}`;
+  const url = `${BASE_API_URL}/api/videos?pagination[page]=${page || 1}&pagination[pageSize]=${
+    size || 50
+  }&sort[0]=publishedAt&sort[1]=updatedAt&sort[2]=createdAt`;
   try {
     const response = await http.get(url);
     return response;
@@ -34,13 +34,24 @@ export async function getVideoByCategory(
   }
 }
 
-export async function getVideoDetail(
-  videoId: string
-): Promise<Video | undefined> {
+export async function getVideoDetail(videoId: string): Promise<Video | undefined> {
   const url = `${BASE_API_URL}/api/videos/${videoId}?populate=tags&populate=categories&populate=actors`;
   try {
     const { data } = await http.get(url);
     return data;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}
+
+export async function getVideosTopwatch(
+  page: number,
+  pageSize: number
+): Promise<ResponsePagination<Video[] | undefined> | undefined> {
+  const url = `${BASE_API_URL}/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=view_count`;
+  try {
+    return await http.get(url);
   } catch (error) {
     console.error(error);
     return undefined;

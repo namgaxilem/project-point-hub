@@ -1,8 +1,8 @@
-"use client";
-import { useLang } from "@/contexts";
-import { formatNumberThousandDeliminator } from "@/lib/format-utils";
-import { Category } from "@/types/Category";
-import Link from "next/link";
+'use client';
+import { useLang } from '@/contexts';
+import { formatNumberThousandDeliminator } from '@/lib/format-utils';
+import { Category } from '@/types/Category';
+import Link from 'next/link';
 
 interface Props {
   category: Category;
@@ -11,14 +11,11 @@ export default function CategoryItem({ category }: Props) {
   const { lang } = useLang();
   return (
     <div className="bg-[#f5f5f5] dark:bg-black rounded cursor-pointer hover:-translate-y-2 transition-all relative">
-      <Link
-        href={`/categories/${category.documentId}`}
-        key={category.documentId}
-      >
+      <Link href={`/categories/${category.documentId}`} key={category.documentId}>
         <div className="h-[150px] overflow-hidden mx-auto aspect-w-10 aspect-h-8 relative">
           <img
             src={`${category.thumbnail_url}`}
-            alt={category.category_name || "category_name"}
+            alt={category.category_name || 'category_name'}
             className="h-full w-full object-cover brightness-[60%]"
           />
 
@@ -27,8 +24,7 @@ export default function CategoryItem({ category }: Props) {
               {category.category_name}
             </p>
             <p className="lg:text-base md:text-sm text-xs text-white px-5">
-              ({formatNumberThousandDeliminator(category.videos.count)}{" "}
-              {lang.categoryPage.videos})
+              ({formatNumberThousandDeliminator(category.videos.count)} {lang.categoryPage.videos})
             </p>
           </div>
         </div>

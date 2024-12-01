@@ -1,6 +1,6 @@
-import React from "react";
-import videojs from "video.js";
-import "video.js/dist/video-js.css";
+import React from 'react';
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
 
 export const VideoJS = ({ options, onReady }) => {
   const videoRef = React.useRef<any>(null);
@@ -10,21 +10,17 @@ export const VideoJS = ({ options, onReady }) => {
     // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
       // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode.
-      const videoElement = document.createElement("video-js");
+      const videoElement = document.createElement('video-js');
 
-      videoElement.classList.add("vjs-big-play-centered");
+      videoElement.classList.add('vjs-big-play-centered');
 
       if (videoRef?.current) {
         videoRef.current.appendChild(videoElement);
 
-        const player = (playerRef.current = videojs(
-          videoElement,
-          options,
-          () => {
-            videojs.log("player is ready");
-            onReady?.(player);
-          }
-        ));
+        const player = (playerRef.current = videojs(videoElement, options, () => {
+          videojs.log('player is ready');
+          onReady?.(player);
+        }));
       }
 
       // You could update an existing player in the `else` block here

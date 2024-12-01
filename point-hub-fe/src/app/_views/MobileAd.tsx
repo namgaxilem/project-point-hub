@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import React from "react";
-import Slider from "react-slick";
+import Link from 'next/link';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import React from 'react';
+import Slider from 'react-slick';
 
 export default function MobileAd() {
   const settings = {
@@ -15,7 +15,7 @@ export default function MobileAd() {
     autoplay: true,
     speed: 500,
     autoplaySpeed: 4000,
-    cssEase: "linear",
+    cssEase: 'linear',
     nextArrow: <br />,
     prevArrow: <br />,
   };
@@ -23,10 +23,7 @@ export default function MobileAd() {
     <div className="p-[20px] md:hidden block">
       <Slider {...settings} className="p-0">
         <div className="h-[150px]">
-          <Link
-            href={`/ad`}
-            className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
-          >
+          <Link href={`/ad`} className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight">
             <img
               src="asd"
               alt="face cream"
@@ -35,10 +32,7 @@ export default function MobileAd() {
           </Link>
         </div>
         <div className="h-[150px]">
-          <Link
-            href={`/ad`}
-            className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight"
-          >
+          <Link href={`/ad`} className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight">
             <img
               src="asd"
               alt="face cream"

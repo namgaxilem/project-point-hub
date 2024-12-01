@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { LocaleType } from "@/app/dictionaries";
-import { createContext, useContext, useMemo, useState } from "react";
+import { LocaleType } from '@/app/dictionaries';
+import { createContext, useContext, useMemo, useState } from 'react';
 
 interface ContextProps {
   lang: any;
@@ -19,12 +19,10 @@ export default function LangProvider({ dict, locale, children }) {
   const contextValue = useMemo(
     () => ({
       lang,
-      locale: locale || "en",
+      locale: locale || 'en',
     }),
     [lang, locale]
   );
 
-  return (
-    <LangContext.Provider value={contextValue}>{children}</LangContext.Provider>
-  );
+  return <LangContext.Provider value={contextValue}>{children}</LangContext.Provider>;
 }

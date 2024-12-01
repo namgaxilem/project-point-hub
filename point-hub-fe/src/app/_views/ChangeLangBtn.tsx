@@ -1,16 +1,10 @@
-"use client";
+'use client';
 
-import { useLang } from "@/contexts";
-import { PREFERED_LANG_COOKIE_NAME } from "@/lib/constants";
-import {
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/react";
-import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useLang } from '@/contexts';
+import { PREFERED_LANG_COOKIE_NAME } from '@/lib/constants';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
 
 type lang_onj = {
   lang: string;
@@ -19,24 +13,11 @@ type lang_onj = {
 };
 const lang_list: lang_onj[] = [
   {
-    lang: "vi",
-    title: "Tiếng Việt",
+    lang: 'vi',
+    title: 'Tiếng Việt',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 32 32"
-      >
-        <rect
-          x="1"
-          y="4"
-          width="30"
-          height="24"
-          rx="4"
-          ry="4"
-          fill="#c93728"
-        ></rect>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+        <rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#c93728"></rect>
         <path
           d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
           opacity=".15"
@@ -54,24 +35,11 @@ const lang_list: lang_onj[] = [
     ),
   },
   {
-    lang: "en",
-    title: "English",
+    lang: 'en',
+    title: 'English',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 32 32"
-      >
-        <rect
-          x="1"
-          y="4"
-          width="30"
-          height="24"
-          rx="4"
-          ry="4"
-          fill="#fff"
-        ></rect>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+        <rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#fff"></rect>
         <path
           d="M1.638,5.846H30.362c-.711-1.108-1.947-1.846-3.362-1.846H5c-1.414,0-2.65,.738-3.362,1.846Z"
           fill="#a62842"
@@ -192,20 +160,16 @@ export default function ChangeLangBtn() {
   };
 
   return (
-    <Dropdown>
+    <Dropdown className="min-w-[50px]">
       <DropdownTrigger>
-        <Button className="flex items-center justify-center gap-2 bg-transparent p-0">
-          <span className="text-xs">{selectedLang?.title}</span>
+        <button className="flex items-center justify-center gap-2 bg-transparent p-0 mx-1 w-[30px] md:w-auto">
+          <span className="text-xs hidden md:block">{selectedLang?.title}</span>
           <span>{selectedLang?.icon}</span>
-        </Button>
+        </button>
       </DropdownTrigger>
       <DropdownMenu variant="flat">
         {lang_list.map((e) => (
-          <DropdownItem
-            key={e.lang}
-            startContent={e.icon}
-            onClick={() => onChangeLang(e.lang)}
-          >
+          <DropdownItem key={e.lang} startContent={e.icon} onClick={() => onChangeLang(e.lang)}>
             {e.title}
           </DropdownItem>
         ))}

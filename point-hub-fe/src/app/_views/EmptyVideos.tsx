@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useLang } from "@/contexts";
-import Link from "next/link";
+import { useLang } from '@/contexts';
+import Link from 'next/link';
 
 export default () => {
   const { lang } = useLang();

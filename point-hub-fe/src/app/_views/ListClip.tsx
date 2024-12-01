@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useLang } from "@/contexts";
-import { Pagination as PaginationType } from "@/types/Pagination";
-import { Video } from "@/types/Video";
-import { Pagination } from "@nextui-org/react";
-import Link from "next/link";
-import PaginationItem from "./PaginationItem";
-import EmptyVideos from "./EmptyVideos";
+import { useLang } from '@/contexts';
+import { Pagination as PaginationType } from '@/types/Pagination';
+import { Video } from '@/types/Video';
+import { Pagination } from '@nextui-org/react';
+import Link from 'next/link';
+import PaginationItem from './PaginationItem';
+import EmptyVideos from './EmptyVideos';
 
 interface Props {
   videos?: Video[];
