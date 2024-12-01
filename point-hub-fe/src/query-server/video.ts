@@ -9,7 +9,9 @@ export async function getVideos(
 ): Promise<ResponsePagination<Video[]> | undefined> {
   const url = `${BASE_API_URL}/api/videos?pagination[page]=${
     page || 1
-  }&pagination[pageSize]=${size || 50}`;
+  }&pagination[pageSize]=${
+    size || 50
+  }&sort[0]=publishedAt&sort[1]=updatedAt&sort[2]=createdAt`;
   try {
     const response = await http.get(url);
     return response;
