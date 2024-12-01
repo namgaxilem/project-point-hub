@@ -28,6 +28,7 @@ export default async function Page({ searchParams }: Props) {
       </section>
     );
   } catch (err) {
+    console.error(err)
     return <CommonError />;
   }
 }

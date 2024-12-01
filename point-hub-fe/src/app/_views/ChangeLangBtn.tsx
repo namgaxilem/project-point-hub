@@ -3,11 +3,10 @@
 import { useLang } from "@/contexts";
 import { PREFERED_LANG_COOKIE_NAME } from "@/lib/constants";
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownTrigger,
+  DropdownTrigger
 } from "@nextui-org/react";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
