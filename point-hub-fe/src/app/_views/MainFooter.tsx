@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Logo } from "./Logo";
-import { SITE_NAME } from "@/config";
+import Link from 'next/link';
+import { Logo } from './Logo';
+import { SITE_NAME } from '@/config';
 
 export default function MainFooter() {
   return (
@@ -38,7 +38,7 @@ export default function MainFooter() {
         </div>
         <hr className="my-4 border-dividerLight sm:mx-auto dark:border-dividerDark" />
         <span className="block text-sm text-gray-500 text-center dark:text-gray-400">
-          © 2024{" "}
+          © 2024{' '}
           <Link href="/" className="hover:underline">
             {SITE_NAME}
           </Link>

@@ -1,4 +1,4 @@
-import { Locale } from "./Locale";
+import { Locale } from './Locale';
 
 export interface Category {
   id: number;

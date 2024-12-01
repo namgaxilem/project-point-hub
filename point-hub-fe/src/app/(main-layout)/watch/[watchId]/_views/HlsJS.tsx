@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Hls from "hls.js";
-import { useEffect, useRef } from "react";
+import Hls from 'hls.js';
+import { useEffect, useRef } from 'react';
 
-const PLAYER_ID = "HLSPLAYER";
+const PLAYER_ID = 'HLSPLAYER';
 
 interface Props {
   m3u8Url: string;
@@ -26,24 +26,24 @@ export default ({ m3u8Url, thumbnailUrl }: Props) => {
         hls.current.loadSource(m3u8Url);
         hls.current.attachMedia(video);
         hls.current.on(Hls.Events.MANIFEST_PARSED, () => {
-          console.info("Hls.Events.MANIFEST_PARSED");
+          console.info('Hls.Events.MANIFEST_PARSED');
           // video.play();
         });
         hls.current.on(Hls.Events.ERROR, (event, data) => {
-          console.error("Hls.Events.ERROR", data);
-          video.src = "";
+          console.error('Hls.Events.ERROR', data);
+          video.src = '';
         });
-      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        console.info("Native HLS support detected");
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        console.info('Native HLS support detected');
         video.src = m3u8Url;
-        video.addEventListener("loadedmetadata", () => {
+        video.addEventListener('loadedmetadata', () => {
           // video.play();
         });
       } else {
-        console.warn("HLS is not supported in your browser.");
+        console.warn('HLS is not supported in your browser.');
       }
     } catch (err) {
-      console.error("HlsJS something went wrong!!!", err);
+      console.error('HlsJS something went wrong!!!', err);
     }
   };
 

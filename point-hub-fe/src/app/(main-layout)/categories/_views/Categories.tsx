@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import CategoryItem from "@/app/_views/CategoryItem";
-import { useLang } from "@/contexts";
-import { SearchIcon } from "@/icons/SearchIcon";
-import { Category } from "@/types/Category";
-import { Input } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import CategoryItem from '@/app/_views/CategoryItem';
+import { useLang } from '@/contexts';
+import { SearchIcon } from '@/icons/SearchIcon';
+import { Category } from '@/types/Category';
+import { Input } from '@nextui-org/react';
+import { useEffect, useState } from 'react';
 
 interface Props {
   categories?: Category[];
@@ -13,14 +13,12 @@ interface Props {
 export default ({ categories }: Props) => {
   const { lang } = useLang();
   const [localCategories, setLocalCategories] = useState<Category[]>();
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     if (searchInput) {
       setLocalCategories(
-        categories?.filter((e) =>
-          e.category_name.toLocaleLowerCase().includes(searchInput)
-        )
+        categories?.filter((e) => e.category_name.toLocaleLowerCase().includes(searchInput))
       );
     } else {
       setLocalCategories(categories);
@@ -40,24 +38,24 @@ export default ({ categories }: Props) => {
           isClearable
           radius="lg"
           classNames={{
-            label: "text-black/50 dark:text-white/90",
+            label: 'text-black/50 dark:text-white/90',
             input: [
-              "bg-transparent",
-              "text-black/90 dark:text-white/90",
-              "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+              'bg-transparent',
+              'text-black/90 dark:text-white/90',
+              'placeholder:text-default-700/50 dark:placeholder:text-white/60',
             ],
-            innerWrapper: "bg-transparent",
+            innerWrapper: 'bg-transparent',
             inputWrapper: [
-              "shadow-xl",
-              "bg-default-200/50",
-              "dark:bg-default/60",
-              "backdrop-blur-xl",
-              "backdrop-saturate-200",
-              "hover:bg-default-200/70",
-              "dark:hover:bg-default/70",
-              "group-data-[focus=true]:bg-default-200/50",
-              "dark:group-data-[focus=true]:bg-default/60",
-              "!cursor-text",
+              'shadow-xl',
+              'bg-default-200/50',
+              'dark:bg-default/60',
+              'backdrop-blur-xl',
+              'backdrop-saturate-200',
+              'hover:bg-default-200/70',
+              'dark:hover:bg-default/70',
+              'group-data-[focus=true]:bg-default-200/50',
+              'dark:group-data-[focus=true]:bg-default/60',
+              '!cursor-text',
             ],
           }}
           placeholder={lang.categoryPage.searchCategoryHolder}

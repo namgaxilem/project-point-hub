@@ -1,5 +1,5 @@
-import { PREFERED_LANG_COOKIE_NAME } from "@/lib/constants";
-import { cookies } from "next/headers";
+import { PREFERED_LANG_COOKIE_NAME } from '@/lib/constants';
+import { cookies } from 'next/headers';
 
 export const http = {
   get: async function get(baseUrl: string) {
@@ -21,7 +21,7 @@ export const http = {
       }
       return await response.json();
     } catch (error) {
-      console.error("Error while fetching.");
+      console.error('Error while fetching.');
       throw error;
     }
   },

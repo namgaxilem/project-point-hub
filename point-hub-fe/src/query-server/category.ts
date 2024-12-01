@@ -1,11 +1,9 @@
-import { BASE_API_URL } from "@/config";
-import { Category } from "@/types/Category";
-import { http } from "./http";
-import { ResponsePagination } from "@/types/Pagination";
+import { BASE_API_URL } from '@/config';
+import { Category } from '@/types/Category';
+import { http } from './http';
+import { ResponsePagination } from '@/types/Pagination';
 
-export async function getCategories(): Promise<
-  ResponsePagination<Category[]> | undefined
-> {
+export async function getCategories(): Promise<ResponsePagination<Category[]> | undefined> {
   const url = `${BASE_API_URL}/api/all-categories-with-video-counts`;
   try {
     return await http.get(url);

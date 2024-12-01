@@ -1,5 +1,5 @@
-import { SITE_NAME } from "@/config";
-import Image from "next/image";
+import { SITE_NAME } from '@/config';
+import Image from 'next/image';
 
 const Logo = () => {
   return (
@@ -7,7 +7,7 @@ const Logo = () => {
       className={`inline-flex items-center text-slate-950 dark:text-slate-300 font-semibold xl:text-xl md:text-xl text-base gap-1 max-h-full`}
     >
       <Image
-        src={"/assets/images/main_logo.png"}
+        src={'/assets/images/main_logo.png'}
         width={90}
         height={90}
         alt="Logo"

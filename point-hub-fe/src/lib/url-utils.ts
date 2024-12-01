@@ -1,10 +1,6 @@
-"use client";
+'use client';
 
-export function updateSearchParams(
-  currentUrl: string,
-  param: string,
-  value: string
-) {
+export function updateSearchParams(currentUrl: string, param: string, value: string) {
   // Create a URL object
   const urlObj = new URL(currentUrl);
 
@@ -18,10 +14,7 @@ export function updateSearchParams(
   return urlObj.toString();
 }
 
-export function getCurrentSearchParamByKey(
-  currentUrl: string,
-  paramName: string
-) {
+export function getCurrentSearchParamByKey(currentUrl: string, paramName: string) {
   const urlObj = new URL(currentUrl);
   const searchParams = urlObj.searchParams;
   return searchParams.get(paramName);

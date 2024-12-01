@@ -1,7 +1,7 @@
-import CommonError from "@/app/_views/CommonError";
-import ListClip from "@/app/_views/ListClip";
-import { getCategory } from "@/query-server/category";
-import { getVideoByCategory } from "@/query-server/video";
+import CommonError from '@/app/_views/CommonError';
+import ListClip from '@/app/_views/ListClip';
+import { getCategory } from '@/query-server/category';
+import { getVideoByCategory } from '@/query-server/video';
 
 interface Props {
   params: Promise<{ categoryId: string }>;
@@ -14,10 +14,8 @@ export default async function Page({ params, searchParams }: Props) {
     getCategory(categoryId),
     getVideoByCategory(categoryId, page || 1, 10),
   ]);
-  const category =
-    categoryPromise.status === "fulfilled" ? categoryPromise.value : null;
-  const videos =
-    videosPromise.status === "fulfilled" ? videosPromise.value : null;
+  const category = categoryPromise.status === 'fulfilled' ? categoryPromise.value : null;
+  const videos = videosPromise.status === 'fulfilled' ? videosPromise.value : null;
 
   if (!category) {
     return <CommonError />;
