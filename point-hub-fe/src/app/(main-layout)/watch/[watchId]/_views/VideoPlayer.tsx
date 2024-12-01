@@ -1,25 +1,20 @@
 "use client";
 
+import { useLang } from "@/contexts";
+import { formatNumberThousandDeliminator } from "@/lib/format-utils";
 import { Video } from "@/types/Video";
 import { Chip } from "@nextui-org/react";
-import React from "react";
-import HlsJS from "./HlsJS";
-import { formatNumberThousandDeliminator } from "@/lib/format-utils";
-import { useLang } from "@/contexts";
 import Link from "next/link";
+import HlsJS from "./HlsJS";
 
 interface Props {
-  video?: Video;
+  video: Video;
 }
 export default function VideoPlayer({ video }: Props) {
   const { lang } = useLang();
 
-  if (!video) {
-    return <>Cant play right now</>;
-  }
-
   return (
-    <div className="flex flex-wrap flex-col justify-between items-start mx-auto max-w-screen-xl px-[16px] md:p-0">
+    <div className="flex flex-wrap flex-col justify-between items-start mx-auto max-w-screen-xl px-[16px]">
       <div className="flex items-center gap-2 mt-4">
         {video.categories.map((cate) => (
           <Chip
@@ -53,7 +48,10 @@ export default function VideoPlayer({ video }: Props) {
       </div>
 
       <section className="w-full mt-3">
-        <HlsJS m3u8Url={video.source_video_url} />
+        <HlsJS
+          m3u8Url={video.source_video_url}
+          thumbnailUrl={video.thumbnail_url}
+        />
       </section>
 
       {video.actors?.length > 0 && (
