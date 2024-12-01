@@ -22,6 +22,7 @@ import { useCategories } from "@/query-client/category";
 import CategoryItem from "./CategoryItem";
 import dynamic from "next/dynamic";
 import ChangeGenderBtn from "./ChangeGenderBtn";
+import { usePathname } from "next/navigation";
 
 const DarkmodeToggle = dynamic(() => import("./DarkmodeToggle"), {
   ssr: false,
@@ -73,6 +74,7 @@ const MobileSideMenuContent = ({
   onCloseMobileMenu: () => void;
 }) => {
   const { lang } = useLang();
+  const pathname = usePathname();
 
   return (
     <ModalBody className="p-0">
@@ -81,7 +83,11 @@ const MobileSideMenuContent = ({
           <li>
             <Link
               href="/top-watches"
-              className="flex items-center py-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={`flex items-center py-2 ${
+                pathname.includes("top-watches")
+                  ? "text-primary-500 dark:text-primary-500 font-bold"
+                  : "text-black dark:text-white"
+              }`}
               onClick={onCloseMobileMenu}
             >
               <span className="flex-1 ms-3 whitespace-nowrap">
@@ -97,7 +103,11 @@ const MobileSideMenuContent = ({
                 <li>
                   <Link
                     href="/categories"
-                    className="flex items-center py-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className={`flex items-center py-1 rounded-lg ${
+                      pathname.includes("categories")
+                        ? "text-primary-500 dark:text-primary-500 font-bold"
+                        : "text-black dark:text-white"
+                    }`}
                     onClick={onCloseMobileMenu}
                   >
                     <span className="flex-1 ms-3 whitespace-nowrap">
@@ -119,6 +129,7 @@ const MobileSideMenuContent = ({
 export default function MainHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { lang } = useLang();
+  const pathname = usePathname();
 
   const onOpenMobileMenu = () => {
     onOpen();
@@ -145,7 +156,14 @@ export default function MainHeader() {
               </li>
               <li>
                 <Tooltip className="p-0" content={<CategoriesDesktop />}>
-                  <Link href="/categories" className="flex items-center gap-1">
+                  <Link
+                    href="/categories"
+                    className={`flex items-center gap-1 ${
+                      pathname.includes("categories")
+                        ? "text-primary-500 dark:text-primary-500 font-bold"
+                        : "text-black dark:text-white"
+                    }`}
+                  >
                     <span>{lang.header.categories}</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +183,11 @@ export default function MainHeader() {
               <li>
                 <Link
                   href="/top-watches"
-                  className="block py-2 pr-4 pl-3 text-black border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  className={`block py-2 pr-4 pl-3 lg:p-0  hover:text-primary-500 ${
+                    pathname.includes("top-watches")
+                      ? "text-primary-500 dark:text-primary-500 font-bold"
+                      : "text-black dark:text-white"
+                  }`}
                 >
                   {lang.header.topWatch}
                 </Link>

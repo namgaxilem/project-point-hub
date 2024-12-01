@@ -78,7 +78,6 @@ export default function VideoSuggestion({ video }: Props) {
         <Pagination
           showControls
           isCompact
-          color="warning"
           initialPage={1}
           page={pagination?.pagination?.page}
           total={pagination?.pagination?.total || 0}

@@ -19,6 +19,9 @@ export default {
         dividerLight: "var(--divider-light)",
         textDark: "var(--foreground-dark)",
         textLight: "var(--foreground-light)",
+        primary: {
+          500: "#27A2F8",
+        },
       },
     },
   },
