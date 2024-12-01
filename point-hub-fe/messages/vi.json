@@ -5,7 +5,10 @@
     "topWatch": "Xem nhiều",
     "categories": "Thể loại",
     "searchHolder": "Tìm kiếm phim",
-    "searchTitle": "Tìm kiếm"
+    "searchTitle": "Tìm kiếm",
+    "straight": "Thẳng",
+    "lgbt": "Đồng tính nam",
+    "trans": "Chuyển giới"
   },
   "errors": {
     "page_notfound": "Không thể tìm thấy trang này",
@@ -22,5 +25,8 @@
     "videoSuggestTitle": "Đề xuất cho bạn",
     "noSuggestVideo": "Không có video đề xuất",
     "actors": "Diễn viên"
+  },
+  "topWatchPage": {
+    "title": "Xem nhiều"
   }
 }

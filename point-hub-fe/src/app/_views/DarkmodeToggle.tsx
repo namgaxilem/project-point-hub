@@ -45,7 +45,7 @@ export default function DarkmodeToggle() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm size-5 mr-3 cursor-pointer"
+      className="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm size-5 w-[30px] mx-1 cursor-pointer"
       onClick={toggleDark}
     >
       <path

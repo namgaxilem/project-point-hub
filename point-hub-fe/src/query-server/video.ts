@@ -46,3 +46,16 @@ export async function getVideoDetail(
     return undefined;
   }
 }
+
+export async function getVideosTopwatch(
+  page: number,
+  pageSize: number
+): Promise<ResponsePagination<Video[] | undefined> | undefined> {
+  const url = `${BASE_API_URL}/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=view_count`;
+  try {
+    return await http.get(url);
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}

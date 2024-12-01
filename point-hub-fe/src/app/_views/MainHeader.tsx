@@ -21,6 +21,7 @@ import { useLang } from "@/contexts";
 import { useCategories } from "@/query-client/category";
 import CategoryItem from "./CategoryItem";
 import dynamic from "next/dynamic";
+import ChangeGenderBtn from "./ChangeGenderBtn";
 
 const DarkmodeToggle = dynamic(() => import("./DarkmodeToggle"), {
   ssr: false,
@@ -69,16 +70,6 @@ const MobileSideMenuContent = () => {
     <ModalBody className="p-0">
       <div className="h-full px-3 py-4 overflow-y-auto dark:bg-bgDark bg-bgLight">
         <ul className="space-y-2 font-medium mb-3">
-          <li>
-            <Link
-              href="/"
-              className="flex items-center py-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-            >
-              <span className="flex-1 ms-3 whitespace-nowrap">
-                {lang.header.homePage}
-              </span>
-            </Link>
-          </li>
           <li>
             <Link
               href="/top-watches"
@@ -134,14 +125,35 @@ export default function MainHeader() {
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
             id="mobile-menu-2"
           >
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 items-center">
+            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0 items-center">
+              <li>
+                <ChangeGenderBtn />
+              </li>
+              <li>
+                <Tooltip className="p-0" content={<CategoriesDesktop />}>
+                  <Link href="/categories" className="flex items-center gap-1">
+                    <span>{lang.header.categories}</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="size-5 cursor-pointer"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </Link>
+                </Tooltip>
+              </li>
               <li>
                 <Link
-                  href="/"
-                  className="block py-2 pr-4 pl-3 text-white rounded bg-blue-700 lg:bg-transparent lg:text-blue-700 lg:p-0 dark:text-white"
-                  aria-current="page"
+                  href="/top-watches"
+                  className="block py-2 pr-4 pl-3 text-black border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                 >
-                  {lang.header.homePage}
+                  {lang.header.topWatch}
                 </Link>
               </li>
               <li>
@@ -175,42 +187,18 @@ export default function MainHeader() {
                   }
                 />
               </li>
-              <li>
-                <Link
-                  href="/top-watches"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  {lang.header.topWatch}
-                </Link>
-              </li>
-              <li>
-                <Tooltip className="p-0" content={<CategoriesDesktop />}>
-                  <Link href="/categories" className="flex items-center gap-1">
-                    <span>{lang.header.categories}</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="size-5 cursor-pointer"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </Link>
-                </Tooltip>
-              </li>
             </ul>
           </div>
           <div className="flex items-center lg:order-2">
             <DarkmodeToggle />
+            <div className="block md:hidden w-[30px]">
+              <ChangeGenderBtn />
+            </div>
             <ChangeLangBtn />
             <button
               data-collapse-toggle="mobile-menu-2"
               type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="mobile-menu-2"
               aria-expanded="false"
               onClick={onOpenMobileMenu}

@@ -192,12 +192,12 @@ export default function ChangeLangBtn() {
   };
 
   return (
-    <Dropdown>
+    <Dropdown className="min-w-[50px]">
       <DropdownTrigger>
-        <Button className="flex items-center justify-center gap-2 bg-transparent p-0">
-          <span className="text-xs">{selectedLang?.title}</span>
+        <button className="flex items-center justify-center gap-2 bg-transparent p-0 mx-1 w-[30px] md:w-auto">
+          <span className="text-xs hidden md:block">{selectedLang?.title}</span>
           <span>{selectedLang?.icon}</span>
-        </Button>
+        </button>
       </DropdownTrigger>
       <DropdownMenu variant="flat">
         {lang_list.map((e) => (
