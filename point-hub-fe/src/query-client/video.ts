@@ -1,3 +1,4 @@
+import { LocaleType } from '@/app/dictionaries';
 import { videoSuggestQueryBuilder } from '@/lib/query-utils';
 import { http } from '@/query-client/http';
 import { Actor } from '@/types/Actor';
@@ -11,6 +12,7 @@ export const useVideosSuggestion = (
   page: number,
   pageSize: number,
   videoId: string,
+  locale: LocaleType,
   relations?: {
     categories?: Category[];
     tags?: Tag[];
@@ -23,7 +25,8 @@ export const useVideosSuggestion = (
       return http.get<ResponsePagination<Video[]> | undefined>(
         `/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}${videoSuggestQueryBuilder(
           relations || {}
-        )}&filters[$and][0][documentId][$not][$eq]=${videoId}`
+        )}&filters[$and][0][documentId][$not][$eq]=${videoId}`,
+        locale
       );
     },
   });

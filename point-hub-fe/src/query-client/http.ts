@@ -1,8 +1,7 @@
 'use client';
+import { LocaleType } from '@/app/dictionaries';
 import { BASE_API_URL } from '@/config';
 import axios from 'axios';
-import { getCookie } from 'cookies-next';
-import { PREFERED_LANG_COOKIE_NAME } from '../lib/constants';
 
 export const axiosInstance = axios.create({
   headers: {},
@@ -12,8 +11,7 @@ export const axiosInstance = axios.create({
 axiosInstance.defaults.withCredentials = true;
 
 export const http = {
-  get: function get<Response = unknown>(url: string) {
-    const locale = getCookie(PREFERED_LANG_COOKIE_NAME);
+  get: function get<Response = unknown>(url: string, locale: LocaleType | undefined) {
     return axiosInstance
       .get<Response>(
         url,

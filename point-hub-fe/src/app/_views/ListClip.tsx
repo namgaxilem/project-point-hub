@@ -4,9 +4,9 @@ import { useLang } from '@/contexts';
 import { Pagination as PaginationType } from '@/types/Pagination';
 import { Video } from '@/types/Video';
 import { Pagination } from '@nextui-org/react';
-import Link from 'next/link';
-import PaginationItem from './PaginationItem';
 import EmptyVideos from './EmptyVideos';
+import LangLink from './LangLink';
+import PaginationItem from './PaginationItem';
 
 interface Props {
   videos?: Video[];
@@ -23,7 +23,7 @@ export default function ListClip({ videos, pagination }: Props) {
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 max-xl:gap-4 gap-6 py-[20px]">
         {videos?.map((video) => (
-          <Link
+          <LangLink
             key={video.documentId}
             href={`/watch/${video.documentId}`}
             className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight overflow-hidden"
@@ -41,7 +41,7 @@ export default function ListClip({ videos, pagination }: Props) {
                 {video.view_count || 0} {lang.videoPage.viewCount}
               </p>
             </div>
-          </Link>
+          </LangLink>
         ))}
       </div>
 

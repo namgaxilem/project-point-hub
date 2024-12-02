@@ -1,10 +1,10 @@
 'use client';
 
+import LangLink from '@/app/_views/LangLink';
 import { useLang } from '@/contexts';
 import { formatNumberThousandDeliminator } from '@/lib/format-utils';
 import { Video } from '@/types/Video';
 import { Chip } from '@nextui-org/react';
-import Link from 'next/link';
 import HlsJS from './HlsJS';
 
 interface Props {
@@ -18,7 +18,7 @@ export default function VideoPlayer({ video }: Props) {
       <div className="flex items-center gap-2 mt-4">
         {video.categories.map((cate) => (
           <Chip color="danger" key={cate.category_name} className="rounded" size="sm">
-            <Link href={`/categories/${cate.documentId}`}>{cate.category_name}</Link>
+            <LangLink href={`/categories/${cate.documentId}`}>{cate.category_name}</LangLink>
           </Chip>
         ))}
       </div>

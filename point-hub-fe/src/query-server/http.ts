@@ -1,14 +1,12 @@
-import { PREFERED_LANG_COOKIE_NAME } from '@/lib/constants';
-import { cookies } from 'next/headers';
+import { LocaleType } from '@/app/dictionaries';
 
 export const http = {
-  get: async function get(baseUrl: string) {
+  get: async function get(baseUrl: string, locale: LocaleType | undefined) {
     try {
       let params: Record<string, string> = {};
-      const locale = (await cookies()).get(PREFERED_LANG_COOKIE_NAME);
-      if (locale?.value) {
+      if (locale) {
         params = {
-          locale: locale?.value,
+          locale: locale,
         };
       }
       const url = new URL(baseUrl);

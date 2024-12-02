@@ -1,7 +1,7 @@
 'use client';
 
 import { useLang } from '@/contexts';
-import Link from 'next/link';
+import LangLink from './LangLink';
 
 export default () => {
   const { lang } = useLang();
@@ -37,12 +37,12 @@ export default () => {
             {lang.errors.please_go_back}
           </p>
           <div className="flex gap-3">
-            <Link
+            <LangLink
               href="/"
               className="w-full px-3 py-2 bg-primary-500 transition-all duration-500 rounded-full text-white font-semibold leading-4 text-center"
             >
               {lang.header.homePage}
-            </Link>
+            </LangLink>
           </div>
         </div>
       </div>
