@@ -4,15 +4,15 @@ import { getCategory } from '@/query-server/category';
 import { getVideoByCategory } from '@/query-server/video';
 
 interface Props {
-  params: Promise<{ categoryId: string }>;
+  params: Promise<{ categoryId: string, lang: string }>;
   searchParams: Promise<{ page: string }>;
 }
 export default async function Page({ params, searchParams }: Props) {
-  const { categoryId } = await params;
+  const { categoryId, lang } = await params;
   const { page } = await searchParams;
   const [categoryPromise, videosPromise] = await Promise.allSettled([
-    getCategory(categoryId),
-    getVideoByCategory(categoryId, page || 1, 10),
+    getCategory(categoryId, lang),
+    getVideoByCategory(categoryId, page || 1, 10, lang),
   ]);
   const category = categoryPromise.status === 'fulfilled' ? categoryPromise.value : null;
   const videos = videosPromise.status === 'fulfilled' ? videosPromise.value : null;

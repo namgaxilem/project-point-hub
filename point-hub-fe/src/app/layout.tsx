@@ -1,9 +1,7 @@
-import { RootContext } from '@/contexts';
+import { SITE_NAME } from '@/config';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { getLanguage, getLocale } from './dictionaries';
-import { SITE_NAME } from '@/config';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -26,17 +24,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const dict = await getLanguage();
-  const locale = await getLocale();
-
   return (
     <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark:ndo-border-dark relative text-base text-gray-900 dark:bg-black dark:text-white`}
       >
-        <RootContext dict={dict} locale={locale}>
-          {children}
-        </RootContext>
+        {children}
       </body>
     </html>
   );

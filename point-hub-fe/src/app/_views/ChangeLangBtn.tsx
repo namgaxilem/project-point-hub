@@ -1,13 +1,12 @@
 'use client';
 
 import { useLang } from '@/contexts';
-import { PREFERED_LANG_COOKIE_NAME } from '@/lib/constants';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
-import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
+import { LocaleType } from '../dictionaries';
 
 type lang_onj = {
-  lang: string;
+  lang: LocaleType;
   title: string;
   icon: React.ReactElement;
 };
@@ -155,8 +154,9 @@ export default function ChangeLangBtn() {
   }, [locale]);
 
   const onChangeLang = (lang) => {
-    Cookies.set(PREFERED_LANG_COOKIE_NAME, lang);
-    window.location.reload();
+    const pathnameSplitted = window.location.pathname.split('/'); // pathnameSplitted[0] will always ''
+    pathnameSplitted[1] = lang;
+    window.location.href = window.location.origin + '/' + pathnameSplitted.join('/');
   };
 
   return (

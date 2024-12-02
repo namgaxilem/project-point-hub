@@ -7,8 +7,8 @@ import VideoPlayer from './_views/VideoPlayer';
 import VideoSuggestion from './_views/VideoSuggestion';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const watchId = (await params).watchId;
-  const video: Video | undefined = await getVideoDetail(watchId);
+  const { watchId, lang } = await params;
+  const video: Video | undefined = await getVideoDetail(watchId, lang);
 
   return {
     title: `${video?.title} | ${SITE_NAME}`,
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${video?.title} | ${SITE_NAME}`,
       description: video?.description,
       type: 'website',
-      url: `https:/${SITE_DOMAIN}/watch/${watchId}`,
+      url: `https://${SITE_DOMAIN}/${lang}/watch/${watchId}`,
       images: [
         {
           url: video?.thumbnail_url || '',
@@ -29,11 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 interface Props {
-  params: Promise<{ watchId: string }>;
+  params: Promise<{ watchId: string; lang: string }>;
 }
 export default async function Page({ params }: Props) {
-  const watchId = (await params).watchId;
-  const video: Video | undefined = await getVideoDetail(watchId);
+  const { watchId, lang } = await params;
+  const video: Video | undefined = await getVideoDetail(watchId, lang);
 
   if (!video) {
     return <VideoNotFound />;

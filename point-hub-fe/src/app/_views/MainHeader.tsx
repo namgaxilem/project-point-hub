@@ -1,6 +1,8 @@
 'use client';
 
+import { useLang } from '@/contexts';
 import { SearchIcon } from '@/icons/SearchIcon';
+import { useCategories } from '@/query-client/category';
 import {
   Accordion,
   AccordionItem,
@@ -14,22 +16,21 @@ import {
   Tooltip,
   useDisclosure,
 } from '@nextui-org/react';
-import Link from 'next/link';
-import ChangeLangBtn from './ChangeLangBtn';
-import { Logo } from './Logo';
-import { useLang } from '@/contexts';
-import { useCategories } from '@/query-client/category';
-import CategoryItem from './CategoryItem';
 import dynamic from 'next/dynamic';
-import ChangeGenderBtn from './ChangeGenderBtn';
 import { usePathname } from 'next/navigation';
+import CategoryItem from './CategoryItem';
+import ChangeGenderBtn from './ChangeGenderBtn';
+import ChangeLangBtn from './ChangeLangBtn';
+import LangLink from './LangLink';
+import { Logo } from './Logo';
 
 const DarkmodeToggle = dynamic(() => import('./DarkmodeToggle'), {
   ssr: false,
 });
 
 const CategoriesMobile = ({ onCloseMobileMenu }: { onCloseMobileMenu: () => void }) => {
-  const { data: categories, isLoading } = useCategories();
+  const { locale } = useLang();
+  const { data: categories, isLoading } = useCategories(locale);
 
   if (isLoading) {
     return <Spinner />;
@@ -47,7 +48,8 @@ const CategoriesMobile = ({ onCloseMobileMenu }: { onCloseMobileMenu: () => void
 };
 
 const CategoriesDesktop = () => {
-  const { data: categories, isLoading } = useCategories();
+  const { locale } = useLang();
+  const { data: categories, isLoading } = useCategories(locale);
 
   if (isLoading) {
     return <Spinner />;
@@ -73,7 +75,7 @@ const MobileSideMenuContent = ({ onCloseMobileMenu }: { onCloseMobileMenu: () =>
       <div className="h-full px-3 py-4 overflow-y-auto dark:bg-bgDark bg-bgLight">
         <ul className="space-y-2 font-medium mb-3">
           <li>
-            <Link
+            <LangLink
               href="/top-watches"
               className={`flex items-center py-2 ${
                 pathname.includes('top-watches')
@@ -83,7 +85,7 @@ const MobileSideMenuContent = ({ onCloseMobileMenu }: { onCloseMobileMenu: () =>
               onClick={onCloseMobileMenu}
             >
               <span className="flex-1 ms-3 whitespace-nowrap">{lang.header.topWatch}</span>
-            </Link>
+            </LangLink>
           </li>
           <Accordion isCompact defaultExpandedKeys={['1']} className="p-0 m-0">
             <AccordionItem
@@ -91,7 +93,7 @@ const MobileSideMenuContent = ({ onCloseMobileMenu }: { onCloseMobileMenu: () =>
               className="p-0 m-0"
               title={
                 <li>
-                  <Link
+                  <LangLink
                     href="/categories"
                     className={`flex items-center py-1 rounded-lg ${
                       pathname.includes('categories')
@@ -101,7 +103,7 @@ const MobileSideMenuContent = ({ onCloseMobileMenu }: { onCloseMobileMenu: () =>
                     onClick={onCloseMobileMenu}
                   >
                     <span className="flex-1 ms-3 whitespace-nowrap">{lang.header.categories}</span>
-                  </Link>
+                  </LangLink>
                 </li>
               }
             >
@@ -131,9 +133,9 @@ export default function MainHeader() {
     <header>
       <nav className="bg-bgLight px-4 lg:px-6 py-2.5 dark:bg-bgDark dark:border-0 dark:border-dividerDark border-dividerLight md:pr-4 pr-0">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <Link href="/" className="flex items-center">
+          <LangLink href="/" className="flex items-center">
             <Logo />
-          </Link>
+          </LangLink>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
             id="mobile-menu-2"
@@ -144,7 +146,7 @@ export default function MainHeader() {
               </li>
               <li>
                 <Tooltip className="p-0" content={<CategoriesDesktop />}>
-                  <Link
+                  <LangLink
                     href="/categories"
                     className={`flex items-center gap-1 ${
                       pathname.includes('categories')
@@ -165,11 +167,11 @@ export default function MainHeader() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </Link>
+                  </LangLink>
                 </Tooltip>
               </li>
               <li>
-                <Link
+                <LangLink
                   href="/top-watches"
                   className={`block py-2 pr-4 pl-3 lg:p-0  hover:text-primary-500 ${
                     pathname.includes('top-watches')
@@ -178,7 +180,7 @@ export default function MainHeader() {
                   }`}
                 >
                   {lang.header.topWatch}
-                </Link>
+                </LangLink>
               </li>
               <li>
                 <Input
@@ -281,13 +283,13 @@ export default function MainHeader() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button>
-            <Link
+            <LangLink
               href="/"
               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               onClick={onCloseMobileMenu}
             >
               <Logo />
-            </Link>
+            </LangLink>
           </ModalHeader>
           <MobileSideMenuContent onCloseMobileMenu={onCloseMobileMenu} />
           <ModalFooter className="flex-col px-2 py-5">
