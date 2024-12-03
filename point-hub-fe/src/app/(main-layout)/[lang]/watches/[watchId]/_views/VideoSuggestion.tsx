@@ -54,15 +54,19 @@ export default function VideoSuggestion({ video }: Props) {
           <LangLink
             key={video.documentId}
             href={`/watches/${video.documentId}`}
-            className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight overflow-hidden"
+            className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight overflow-hidden w-full"
           >
             <img
               src={video.thumbnail_url}
               alt={video.title}
               className="w-full aspect-square rounded object-cover"
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src = '/assets/images/main_logo.png';
+              }}
             />
             <div className="mt-1">
-              <h6 className="font-semibold text-lg leading-8 text-black dark:text-textDark transition-all duration-500 group-hover:text-indigo-600">
+              <h6 className="font-semibold text-base md:text-lg leading-8 text-black dark:text-textDark transition-all duration-500 group-hover:text-indigo-600">
                 {video.title}
               </h6>
               <p className="font-normal text-xs text-gray-500">
