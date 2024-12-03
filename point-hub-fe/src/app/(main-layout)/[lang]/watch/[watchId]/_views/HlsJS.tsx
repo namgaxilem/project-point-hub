@@ -52,15 +52,17 @@ export default ({ m3u8Url, thumbnailUrl }: Props) => {
   }, []);
 
   return (
-    <video
-      id={PLAYER_ID}
-      className="w-full"
-      preload="none"
-      controls
-      autoPlay={false}
-      crossOrigin="anonymous"
-      poster={thumbnailUrl}
-      muted
-    />
+    <div className="w-full h-[calc(0.62_*_100vw)] lg:h-[calc(0.62_*_1280px)]">
+      <video
+        className="w-full h-full object-contain"
+        id={PLAYER_ID}
+        preload="none"
+        controls
+        autoPlay={false}
+        crossOrigin="anonymous"
+        poster={thumbnailUrl}
+        muted
+      />
+    </div>
   );
 };
