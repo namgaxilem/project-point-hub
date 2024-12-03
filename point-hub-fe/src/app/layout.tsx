@@ -18,6 +18,18 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: `${SITE_NAME} | Free adult videos for everyone`,
   description: 'Free adult/porn videos to watch for completely free! Just watch and enjoy!',
+  openGraph: {
+    title: `${SITE_NAME} | Free adult videos for everyone`,
+    description: 'Free adult/porn videos to watch for completely free! Just watch and enjoy!',
+    type: 'website',
+    url: `/`,
+    images: [
+      {
+        url: '/assets/images/main_logo.png',
+        secureUrl: '/assets/images/main_logo.png',
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
