@@ -31,7 +31,7 @@ export default function VideoPlayer({ video }: Props) {
       <div className="flex items-center gap-2 mt-4">
         {video.tags.map((tag) => (
           <Chip key={tag.tag_name} className="rounded" size="sm">
-            {tag.tag_name}
+            <LangLink href={`/tags/${tag.documentId}`}>{tag.tag_name}</LangLink>
           </Chip>
         ))}
       </div>
@@ -48,7 +48,7 @@ export default function VideoPlayer({ video }: Props) {
           {lang.videoPage.actors}:{' '}
           {video.actors.map((e) => (
             <Chip key={e.actor_name} className="rounded" size="sm">
-              {e.actor_name}
+              <LangLink href={`/actors/${e.documentId}`}>{e.actor_name}</LangLink>
             </Chip>
           ))}
         </div>

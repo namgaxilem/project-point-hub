@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${video?.title} | ${SITE_NAME}`,
       description: video?.description,
       type: 'website',
-      url: `https://${SITE_DOMAIN}/${lang}/watch/${watchId}`,
+      url: `https://${SITE_DOMAIN}/${lang}/watches/${watchId}`,
       images: [
         {
           url: video?.thumbnail_url || '',

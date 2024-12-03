@@ -2,6 +2,7 @@
 
 import { useLang } from '@/contexts';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { LocaleType } from '../dictionaries';
 
@@ -153,10 +154,11 @@ export default function ChangeLangBtn() {
     setSelectedLang(lang_list.find((e) => e.lang === locale));
   }, [locale]);
 
-  const onChangeLang = (lang) => {
+  const getLangUrl = (lang) => {
     const pathnameSplitted = window.location.pathname.split('/'); // pathnameSplitted[0] will always ''
     pathnameSplitted[1] = lang;
-    window.location.href = window.location.origin + '/' + pathnameSplitted.join('/');
+    const finalLink = window.location.origin + '/' + pathnameSplitted.join('/');
+    return finalLink;
   };
 
   return (
@@ -169,8 +171,11 @@ export default function ChangeLangBtn() {
       </DropdownTrigger>
       <DropdownMenu variant="flat">
         {lang_list.map((e) => (
-          <DropdownItem key={e.lang} startContent={e.icon} onClick={() => onChangeLang(e.lang)}>
-            {e.title}
+          <DropdownItem key={e.lang}>
+            <Link href={getLangUrl(e.lang)} className="flex items-center gap-2" hrefLang={e.lang}>
+              <span>{e.icon}</span>
+              <span>{e.title}</span>
+            </Link>
           </DropdownItem>
         ))}
       </DropdownMenu>

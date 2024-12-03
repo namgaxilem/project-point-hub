@@ -1,30 +1,30 @@
 import CommonError from '@/app/_views/CommonError';
 import ListClip from '@/app/_views/ListClip';
-import { getCategory } from '@/query-server/category';
-import { getVideosByCategory } from '@/query-server/video';
+import { getTag } from '@/query-server/tag';
+import { getVideosByTag } from '@/query-server/video';
 
 interface Props {
-  params: Promise<{ categoryId: string, lang: string }>;
+  params: Promise<{ tagId: string; lang: string }>;
   searchParams: Promise<{ page: string }>;
 }
-export default async function Page({ params, searchParams }: Props) {
-  const { categoryId, lang } = await params;
+export default async function Page({ params, searchParams }: Readonly<Props>) {
+  const { tagId, lang } = await params;
   const { page } = await searchParams;
-  const [categoryPromise, videosPromise] = await Promise.allSettled([
-    getCategory(categoryId, lang),
-    getVideosByCategory(categoryId, page || 1, 10, lang),
+  const [tagPromise, videosPromise] = await Promise.allSettled([
+    getTag(tagId, lang),
+    getVideosByTag(tagId, page || 1, 10, lang),
   ]);
-  const category = categoryPromise.status === 'fulfilled' ? categoryPromise.value : null;
+  const tag = tagPromise.status === 'fulfilled' ? tagPromise.value : null;
   const videos = videosPromise.status === 'fulfilled' ? videosPromise.value : null;
 
-  if (!category) {
+  if (!tag) {
     return <CommonError />;
   }
 
   return (
     <section className="md:py-20 py-10 dark:bg-bgDark bg-bgLight">
       <h1 className="md:container md:mx-auto px-[20px] text-center text-2xl font-bold mb-8">
-        {category.category_name}
+        {tag.tag_name}
       </h1>
       <div className="md:container md:mx-auto px-[20px]">
         <ListClip videos={videos?.data} pagination={videos?.meta} />

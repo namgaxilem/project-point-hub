@@ -21,13 +21,45 @@ export async function getVideos(
   }
 }
 
-export async function getVideoByCategory(
+export async function getVideosByCategory(
   categoryId: string,
   page: number | string,
   pageSize: number,
   locale: LocaleType
 ): Promise<ResponsePagination<Video[]> | undefined> {
   const url = `${BASE_API_URL}/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}&filters[categories][documentId][$eq]=${categoryId}`;
+  try {
+    const response = await http.get(url, locale);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}
+
+export async function getVideosByActor(
+  actorId: string,
+  page: number | string,
+  pageSize: number,
+  locale: LocaleType
+): Promise<ResponsePagination<Video[]> | undefined> {
+  const url = `${BASE_API_URL}/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}&filters[actors][documentId][$eq]=${actorId}`;
+  try {
+    const response = await http.get(url, locale);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}
+
+export async function getVideosByTag(
+  tagId: string,
+  page: number | string,
+  pageSize: number,
+  locale: LocaleType
+): Promise<ResponsePagination<Video[]> | undefined> {
+  const url = `${BASE_API_URL}/api/videos?pagination[page]=${page}&pagination[pageSize]=${pageSize}&filters[tags][documentId][$eq]=${tagId}`;
   try {
     const response = await http.get(url, locale);
     return response;

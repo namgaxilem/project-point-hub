@@ -7,7 +7,7 @@ interface Props {
   params: Promise<{ lang: string }>;
   searchParams: Promise<{ page: string }>;
 }
-export default async function Page({ searchParams, params }: Props) {
+export default async function Page({ searchParams, params }: Readonly<Props>) {
   try {
     const { lang } = await params;
     const { page } = await searchParams;
