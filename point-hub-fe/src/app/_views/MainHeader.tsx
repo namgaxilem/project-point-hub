@@ -17,11 +17,12 @@ import {
   useDisclosure,
 } from '@nextui-org/react';
 import dynamic from 'next/dynamic';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import CategoryItem from './CategoryItem';
 import ChangeGenderBtn from './ChangeGenderBtn';
 import LangLink from './LangLink';
 import { Logo } from './Logo';
+import { FormEventHandler, useState } from 'react';
 
 const DarkmodeToggle = dynamic(() => import('./DarkmodeToggle'), {
   ssr: false,
@@ -121,8 +122,10 @@ const MobileSideMenuContent = ({ onCloseMobileMenu }: { onCloseMobileMenu: () =>
 
 export default function MainHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { lang } = useLang();
+  const { lang, locale } = useLang();
   const pathname = usePathname();
+  const [searchInput, setSearchInput] = useState('');
+  const router = useRouter();
 
   const onOpenMobileMenu = () => {
     onOpen();
@@ -130,6 +133,14 @@ export default function MainHeader() {
 
   const onCloseMobileMenu = () => {
     onClose();
+  };
+
+  const onSearchSubmit = (e?: any) => {
+    e?.preventDefault();
+    if (searchInput) {
+      onClose();
+      router.push(`/${locale}/search?keyword=${searchInput}`);
+    }
   };
 
   return (
@@ -185,35 +196,20 @@ export default function MainHeader() {
                 </LangLink>
               </li>
               <li>
-                <Input
-                  isClearable
-                  radius="lg"
-                  classNames={{
-                    label: 'text-black/50 dark:text-white/90',
-                    input: [
-                      'bg-transparent',
-                      'text-black/90 dark:text-white/90',
-                      'placeholder:text-default-700/50 dark:placeholder:text-white/60',
-                    ],
-                    innerWrapper: 'bg-transparent',
-                    inputWrapper: [
-                      'shadow-xl',
-                      'bg-default-200/50',
-                      'dark:bg-default/60',
-                      'backdrop-blur-xl',
-                      'backdrop-saturate-200',
-                      'hover:bg-default-200/70',
-                      'dark:hover:bg-default/70',
-                      'group-data-[focus=true]:bg-default-200/50',
-                      'dark:group-data-[focus=true]:bg-default/60',
-                      '!cursor-text',
-                    ],
-                  }}
-                  placeholder={lang.header.searchHolder}
-                  startContent={
-                    <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
-                  }
-                />
+                <form onSubmit={onSearchSubmit}>
+                  <Input
+                    size={'sm'}
+                    type="text"
+                    placeholder={lang.header.searchHolder}
+                    startContent={
+                      <SearchIcon
+                        onClick={() => onSearchSubmit()}
+                        className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0"
+                      />
+                    }
+                    onChange={(e) => setSearchInput(e.target.value)}
+                  />
+                </form>
               </li>
             </ul>
           </div>
@@ -295,36 +291,38 @@ export default function MainHeader() {
           </ModalHeader>
           <MobileSideMenuContent onCloseMobileMenu={onCloseMobileMenu} />
           <ModalFooter className="flex-col px-2 py-5">
-            <Input
-              isClearable
-              label={lang.header.searchTitle}
-              radius="lg"
-              classNames={{
-                label: 'text-black/50 dark:text-white/90',
-                input: [
-                  'bg-transparent',
-                  'text-black/90 dark:text-white/90',
-                  'placeholder:text-default-700/50 dark:placeholder:text-white/60',
-                ],
-                innerWrapper: 'bg-transparent',
-                inputWrapper: [
-                  'shadow-xl',
-                  'bg-default-200/50',
-                  'dark:bg-default/60',
-                  'backdrop-blur-xl',
-                  'backdrop-saturate-200',
-                  'hover:bg-default-200/70',
-                  'dark:hover:bg-default/70',
-                  'group-data-[focus=true]:bg-default-200/50',
-                  'dark:group-data-[focus=true]:bg-default/60',
-                  '!cursor-text',
-                ],
-              }}
-              placeholder={lang.header.searchHolder}
-              startContent={
-                <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
-              }
-            />
+            <form onSubmit={onSearchSubmit}>
+              <Input
+                isClearable
+                radius="lg"
+                classNames={{
+                  label: 'text-black/50 dark:text-white/90',
+                  input: [
+                    'bg-transparent',
+                    'text-black/90 dark:text-white/90',
+                    'placeholder:text-default-700/50 dark:placeholder:text-white/60',
+                  ],
+                  innerWrapper: 'bg-transparent',
+                  inputWrapper: [
+                    'shadow-xl',
+                    'bg-default-200/50',
+                    'dark:bg-default/60',
+                    'backdrop-blur-xl',
+                    'backdrop-saturate-200',
+                    'hover:bg-default-200/70',
+                    'dark:hover:bg-default/70',
+                    'group-data-[focus=true]:bg-default-200/50',
+                    'dark:group-data-[focus=true]:bg-default/60',
+                    '!cursor-text',
+                  ],
+                }}
+                placeholder={lang.header.searchHolder}
+                startContent={
+                  <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
+                }
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+            </form>
           </ModalFooter>
         </ModalContent>
       </Modal>
