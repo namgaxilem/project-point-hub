@@ -35,13 +35,9 @@ export default async function Page({ params }: Props) {
   const { watchId, lang } = await params;
   const video: Video | undefined = await getVideoDetail(watchId, lang);
 
-  if (!video) {
-    return <VideoNotFound />;
-  }
-
   return (
     <>
-      <VideoPlayer video={video} />
+      {video ? <VideoPlayer video={video} /> : <VideoNotFound />}
       <br />
       <VideoSuggestion video={video} />
       <br />

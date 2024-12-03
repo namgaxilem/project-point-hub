@@ -146,15 +146,14 @@ export default function MainHeader() {
               </li>
               <li>
                 <Tooltip className="p-0" content={<CategoriesDesktop />}>
-                  <LangLink
-                    href="/categories"
+                  <span
                     className={`flex items-center gap-1 ${
                       pathname.includes('categories')
                         ? 'text-primary-500 dark:text-primary-500 font-bold'
                         : 'text-black dark:text-white'
                     }`}
                   >
-                    <span>{lang.header.categories}</span>
+                    <LangLink href="/categories">{lang.header.categories}</LangLink>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -167,7 +166,7 @@ export default function MainHeader() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </LangLink>
+                  </span>
                 </Tooltip>
               </li>
               <li>
