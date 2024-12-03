@@ -157,7 +157,7 @@ export default function ChangeLangBtn() {
   const getLangUrl = (lang) => {
     const pathnameSplitted = window.location.pathname.split('/'); // pathnameSplitted[0] will always ''
     pathnameSplitted[1] = lang;
-    const finalLink = window.location.origin + '/' + pathnameSplitted.join('/');
+    const finalLink = window.location.origin + pathnameSplitted.join('/');
     return finalLink;
   };
 

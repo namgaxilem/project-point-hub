@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 export const useCategories = (locale: LocaleType) => {
   return useQuery({
-    queryKey: ['useCategories'],
+    queryKey: ['useCategories', locale],
     queryFn: (): Promise<Category[]> => {
       return http
         .get<any>(`/api/all-categories-with-video-counts`, locale)

@@ -4,6 +4,20 @@ import { http } from './http';
 import { ResponsePagination } from '@/types/Pagination';
 import { LocaleType } from '@/app/dictionaries';
 
+export async function getVideoDetail(
+  videoId: string,
+  locale: LocaleType
+): Promise<Video | undefined> {
+  const url = `${BASE_API_URL}/api/videos/${videoId}?populate=tags&populate=categories&populate=actors`;
+  try {
+    const { data } = await http.get(url, locale);
+    return data;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}
+
 export async function getVideos(
   page: number,
   size: number,
@@ -12,6 +26,24 @@ export async function getVideos(
   const url = `${BASE_API_URL}/api/videos?pagination[page]=${page}&pagination[pageSize]=${
     size
   }&sort[0]=publishedAt&sort[1]=updatedAt&sort[2]=createdAt`;
+  try {
+    const response = await http.get(url, locale);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}
+
+export async function getVideosByKeyword(
+  keyword: string,
+  page: number,
+  size: number,
+  locale: LocaleType
+): Promise<ResponsePagination<Video[]> | undefined> {
+  const url = `${BASE_API_URL}/api/videos?pagination[page]=${page}&pagination[pageSize]=${
+    size
+  }&filters[title][$contains]=${keyword}&sort[0]=publishedAt&sort[1]=updatedAt&sort[2]=createdAt`;
   try {
     const response = await http.get(url, locale);
     return response;
@@ -63,20 +95,6 @@ export async function getVideosByTag(
   try {
     const response = await http.get(url, locale);
     return response;
-  } catch (error) {
-    console.error(error);
-    return undefined;
-  }
-}
-
-export async function getVideoDetail(
-  videoId: string,
-  locale: LocaleType
-): Promise<Video | undefined> {
-  const url = `${BASE_API_URL}/api/videos/${videoId}?populate=tags&populate=categories&populate=actors`;
-  try {
-    const { data } = await http.get(url, locale);
-    return data;
   } catch (error) {
     console.error(error);
     return undefined;
