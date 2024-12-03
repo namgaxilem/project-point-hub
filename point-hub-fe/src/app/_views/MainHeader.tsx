@@ -18,11 +18,11 @@ import {
 } from '@nextui-org/react';
 import dynamic from 'next/dynamic';
 import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
 import CategoryItem from './CategoryItem';
 import ChangeGenderBtn from './ChangeGenderBtn';
 import LangLink from './LangLink';
 import { Logo } from './Logo';
-import { FormEventHandler, useState } from 'react';
 
 const DarkmodeToggle = dynamic(() => import('./DarkmodeToggle'), {
   ssr: false,
