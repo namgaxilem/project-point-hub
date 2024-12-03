@@ -20,11 +20,14 @@ import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import CategoryItem from './CategoryItem';
 import ChangeGenderBtn from './ChangeGenderBtn';
-import ChangeLangBtn from './ChangeLangBtn';
 import LangLink from './LangLink';
 import { Logo } from './Logo';
 
 const DarkmodeToggle = dynamic(() => import('./DarkmodeToggle'), {
+  ssr: false,
+});
+
+const ChangeLangBtn = dynamic(() => import('./ChangeLangBtn'), {
   ssr: false,
 });
 
