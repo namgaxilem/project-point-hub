@@ -1,10 +1,9 @@
 'use client';
 
 import { getCurrentSearchParamByKey, updateSearchParams } from '@/lib/url-utils';
-import { cn, PaginationItemType } from '@nextui-org/react';
+import { cn, Link, PaginationItemType } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
-import LangLink from './LangLink';
 
 export default ({ key, value, isActive, onNext, onPrevious, className }: any) => {
   const pathname = usePathname();
@@ -27,7 +26,7 @@ export default ({ key, value, isActive, onNext, onPrevious, className }: any) =>
 
   if (value === PaginationItemType.NEXT) {
     return (
-      <LangLink
+      <Link
         href={nextValue}
         key={key}
         className={cn(className, 'bg-default-200/50 min-w-8 w-8 h-8')}
@@ -45,13 +44,13 @@ export default ({ key, value, isActive, onNext, onPrevious, className }: any) =>
             clipRule="evenodd"
           />
         </svg>
-      </LangLink>
+      </Link>
     );
   }
 
   if (value === PaginationItemType.PREV) {
     return (
-      <LangLink
+      <Link
         href={prevValue}
         key={key}
         className={cn(className, 'bg-default-200/50 min-w-8 w-8 h-8')}
@@ -69,7 +68,7 @@ export default ({ key, value, isActive, onNext, onPrevious, className }: any) =>
             clipRule="evenodd"
           />
         </svg>
-      </LangLink>
+      </Link>
     );
   }
 
@@ -83,13 +82,13 @@ export default ({ key, value, isActive, onNext, onPrevious, className }: any) =>
 
   // cursor is the default item
   return (
-    <LangLink
+    <Link
       key={key}
       // ref={ref}
       href={mainValue}
       className={cn(className, isActive && 'text-white bg-gradient-to-br font-bold')}
     >
       {value}
-    </LangLink>
+    </Link>
   );
 };

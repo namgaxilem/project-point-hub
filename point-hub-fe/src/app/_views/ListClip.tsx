@@ -25,7 +25,7 @@ export default function ListClip({ videos, pagination }: Props) {
         {videos?.map((video) => (
           <LangLink
             key={video.documentId}
-            href={`/watch/${video.documentId}`}
+            href={`/watches/${video.documentId}`}
             className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight overflow-hidden"
           >
             <img

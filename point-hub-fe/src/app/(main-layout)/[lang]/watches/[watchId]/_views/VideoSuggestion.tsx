@@ -53,7 +53,7 @@ export default function VideoSuggestion({ video }: Props) {
         {suggestVideos?.map((video) => (
           <LangLink
             key={video.documentId}
-            href={`/watch/${video.documentId}`}
+            href={`/watches/${video.documentId}`}
             className="mx-auto group cursor-pointer dark:bg-bgDark bg-bgLight overflow-hidden"
           >
             <img
