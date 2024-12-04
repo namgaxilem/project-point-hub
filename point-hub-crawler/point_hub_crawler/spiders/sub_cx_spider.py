@@ -18,7 +18,7 @@ class SubCxSpiderSpider(scrapy.Spider):
         for item_url in response.css("#content > div.loop-content.switchable-view.grid-small > div > div.item > div.thumb > a::attr(href)").getall():
             yield scrapy.Request(response.urljoin(item_url), callback=self.parse_detail)
 
-        # crawling next page if available
+        # crawl next page if available
         current_page = str(self.page_count)
         next_page_url = response.xpath(f'//span[text()="{current_page}"]/following-sibling::a[1]/@href').extract_first()
         if next_page_url and self.page_count <= self.max_page:
