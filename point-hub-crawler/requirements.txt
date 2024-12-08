@@ -1,2 +1,4 @@
+requests
 scrapy
 playwright
+scrapy-playwright
