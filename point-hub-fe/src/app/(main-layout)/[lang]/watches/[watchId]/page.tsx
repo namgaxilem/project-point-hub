@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 interface Props {
   params: Promise<{ watchId: string; lang: string }>;
 }
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: Readonly<Props>) {
   const { watchId, lang } = await params;
   const video: Video | undefined = await getVideoDetail(watchId, lang);
 

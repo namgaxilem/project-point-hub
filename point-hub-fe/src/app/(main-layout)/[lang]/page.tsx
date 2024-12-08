@@ -18,7 +18,7 @@ export default async function Page({ params, searchParams }: Readonly<Props>) {
   return (
     <section className="md:py-20 py-10 dark:bg-bgDark bg-bgLight">
       <div className="md:container md:mx-auto px-[20px]">
-        <ListClip videos={res?.data} />
+        <ListClip videos={res?.data} pagination={res?.meta} />
       </div>
     </section>
   );
