@@ -98,4 +98,7 @@ class SubCxCrawlSpider(CrawlSpider):
             extracted_tags.append(tag_text)
         item['tags'] = [video_code] + extracted_tags
 
+        # categories will be hardcode for subjav
+        item['categories'] = "JAV" 
+
         yield item

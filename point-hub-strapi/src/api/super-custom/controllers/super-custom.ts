@@ -19,42 +19,74 @@ interface CreateBody {
 }
 
 const extract_cates_tags_actors = async (locale, reqBody) => {
-  const categories = reqBody.categories
-    ? await strapi.documents("api::category.category").findMany({
+  let categories = [];
+  let tags = [];
+  let actors = [];
+
+  for (const cate of reqBody.categories) {
+    const existCate = await strapi
+      .documents("api::category.category")
+      .findFirst({
         locale: locale,
         filters: {
-          $or: reqBody.categories?.map((cate) => ({
-            category_name: {
-              $eq: cate,
-            },
-          })),
+          category_name: {
+            $eq: cate,
+          },
         },
-      })
-    : [];
-  const actors = reqBody.actors
-    ? await strapi.documents("api::actor.actor").findMany({
-        locale: locale,
-        filters: {
-          $or: reqBody.actors?.map((actor) => ({
-            actor_name: {
-              $eq: actor,
-            },
-          })),
+      });
+
+    if (existCate) {
+      categories.push(existCate);
+    } else {
+      const newCate = await strapi
+        .documents("api::category.category")
+        .create({ locale, data: { category_name: cate } });
+      categories.push(newCate);
+      publishCategory(newCate.locale, newCate.documentId);
+    }
+  }
+
+  for (const tag of reqBody.tags) {
+    const existTag = await strapi.documents("api::tag.tag").findFirst({
+      locale: locale,
+      filters: {
+        tag_name: {
+          $eq: tag,
         },
-      })
-    : [];
-  const tags = reqBody.tags
-    ? await strapi.documents("api::tag.tag").findMany({
-        locale: locale,
-        filters: {
-          $or: reqBody.tags?.map((tag) => ({
-            tag_name: {
-              $eq: tag,
-            },
-          })),
+      },
+    });
+
+    if (existTag) {
+      tags.push(existTag);
+    } else {
+      const newTag = await strapi
+        .documents("api::tag.tag")
+        .create({ locale, data: { tag_name: tag } });
+      tags.push(newTag);
+      await publishTag(newTag.locale, newTag.documentId);
+    }
+  }
+
+  for (const actor of reqBody.actors) {
+    const existActor = await strapi.documents("api::actor.actor").findFirst({
+      locale: locale,
+      filters: {
+        actor_name: {
+          $eq: actor,
         },
-      })
-    : [];
+      },
+    });
+
+    if (existActor) {
+      actors.push(existActor);
+    } else {
+      const newActor = await strapi
+        .documents("api::actor.actor")
+        .create({ locale, data: { actor_name: actor } });
+      actors.push(newActor);
+      await publishActor(newActor.locale, newActor.documentId);
+    }
+  }
 
   return { categories, tags, actors };
 };
@@ -109,6 +141,24 @@ const updateVideoWithLocale = async (
 };
 const publishVideo = async (locale: string, documentId: string) => {
   return await strapi.documents("api::video.video").publish({
+    locale,
+    documentId,
+  });
+};
+const publishCategory = async (locale: string, documentId: string) => {
+  return await strapi.documents("api::category.category").publish({
+    locale,
+    documentId,
+  });
+};
+const publishTag = async (locale: string, documentId: string) => {
+  return await strapi.documents("api::tag.tag").publish({
+    locale,
+    documentId,
+  });
+};
+const publishActor = async (locale: string, documentId: string) => {
+  return await strapi.documents("api::actor.actor").publish({
     locale,
     documentId,
   });
