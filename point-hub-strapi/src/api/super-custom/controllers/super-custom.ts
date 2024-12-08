@@ -40,9 +40,15 @@ const extract_cates_tags_actors = async (locale, reqBody) => {
     } else {
       const newCate = await strapi
         .documents("api::category.category")
-        .create({ locale, data: { category_name: cate } });
+        .create({ locale: "vi", data: { category_name: cate } });
+      await strapi.documents("api::category.category").update({
+        locale: "en",
+        data: { category_name: cate },
+        documentId: newCate.documentId,
+      });
+      publishCategory("vi", newCate.documentId);
+      publishCategory("en", newCate.documentId);
       categories.push(newCate);
-      publishCategory(newCate.locale, newCate.documentId);
     }
   }
 
@@ -61,9 +67,15 @@ const extract_cates_tags_actors = async (locale, reqBody) => {
     } else {
       const newTag = await strapi
         .documents("api::tag.tag")
-        .create({ locale, data: { tag_name: tag } });
+        .create({ locale: "vi", data: { tag_name: tag } });
+      await strapi.documents("api::tag.tag").update({
+        locale: "en",
+        data: { tag_name: tag },
+        documentId: newTag.documentId,
+      });
+      publishTag("vi", newTag.documentId);
+      publishTag("en", newTag.documentId);
       tags.push(newTag);
-      await publishTag(newTag.locale, newTag.documentId);
     }
   }
 
@@ -256,5 +268,8 @@ export default {
       };
       ctx.status = 500;
     }
+
+    // await strapi.query('api::category.category').deleteMany()
+    // await strapi.query('api::tag.tag').deleteMany()
   },
 };
