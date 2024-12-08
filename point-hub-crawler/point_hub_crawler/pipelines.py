@@ -6,9 +6,24 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
+import requests
 
 
 class PointHubCrawlerPipeline:
+    def __init__(self):
+        pass
+
+    def close(self):
+        pass
+
     def process_item(self, item, spider):
-        print("123123dutme pipeline")
+        try:
+            res = requests.post(
+                'http://localhost:1337/api/create-videos-with-cates-tags-actors', json={
+                    "vi": dict(item),
+                    "en": dict(item)
+                })
+            res.raise_for_status()
+        except Exception as err:
+            print(f"process_item err, {err}")
         return item

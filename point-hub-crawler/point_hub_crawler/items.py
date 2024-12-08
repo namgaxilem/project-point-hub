@@ -15,13 +15,14 @@ class TgddCrawlerItem(scrapy.Item):
     product_name = scrapy.Field()
     price_sale =scrapy.Field()
     price = scrapy.Field()
-    pass
 
 class SubCxCrawlerItem(scrapy.Item):
     title = scrapy.Field()
     description = scrapy.Field()
-    video_code = scrapy.Field()
-    performers = scrapy.Field()
-    category_tags = scrapy.Field()
-    link_src = scrapy.Field()
-    pass
+    thumbnail_url = scrapy.Field()
+    source_video_url = scrapy.Field()
+    slug_url = scrapy.Field()
+
+    actors = scrapy.Field()
+    categories = scrapy.Field()
+    tags = scrapy.Field()

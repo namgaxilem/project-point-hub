@@ -20,7 +20,7 @@ import dynamic from 'next/dynamic';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import CategoryItem from './CategoryItem';
-import ChangeGenderBtn from './ChangeGenderBtn';
+// import ChangeGenderBtn from './ChangeGenderBtn';
 import LangLink from './LangLink';
 import { Logo } from './Logo';
 
@@ -155,9 +155,9 @@ export default function MainHeader() {
             id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0 items-center">
-              <li>
+              {/* <li>
                 <ChangeGenderBtn />
-              </li>
+              </li> */}
               <li>
                 <Tooltip className="p-0" content={<CategoriesDesktop />}>
                   <span
@@ -215,9 +215,9 @@ export default function MainHeader() {
           </div>
           <div className="flex items-center lg:order-2">
             <DarkmodeToggle />
-            <div className="block md:hidden w-[30px]">
+            {/* <div className="block md:hidden w-[30px]">
               <ChangeGenderBtn />
-            </div>
+            </div> */}
             <ChangeLangBtn />
             <button
               data-collapse-toggle="mobile-menu-2"

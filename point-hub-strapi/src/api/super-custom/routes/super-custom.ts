@@ -18,5 +18,14 @@ export default {
         middlewares: [],
       },
     },
+    {
+      method: "POST",
+      path: "/create-videos-with-cates-tags-actors",
+      handler: "super-custom.createVideosWithCatesTagsActors",
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
   ],
 };
