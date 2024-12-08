@@ -2,6 +2,7 @@
 
 import LangLink from '@/app/_views/LangLink';
 import { useLang } from '@/contexts';
+import { formatNumberThousandDeliminator } from '@/lib/format-utils';
 import { useVideosSuggestion } from '@/query-client/video';
 import { Pagination as PaginationType } from '@/types/Pagination';
 import { Video } from '@/types/Video';
@@ -11,7 +12,7 @@ import { useEffect, useState } from 'react';
 interface Props {
   video?: Video;
 }
-export default function VideoSuggestion({ video }: Props) {
+export default function VideoSuggestion({ video }: Readonly<Props>) {
   const { lang, locale } = useLang();
   const [suggestVideos, setSuggestVideos] = useState<Video[]>();
   const [pagination, setPagination] = useState<PaginationType | undefined>({
@@ -22,9 +23,9 @@ export default function VideoSuggestion({ video }: Props) {
     },
   });
   const { data, refetch } = useVideosSuggestion(
-    pagination?.pagination?.page || 1,
-    pagination?.pagination?.pageSize || 15,
-    video?.documentId || '',
+    pagination?.pagination?.page ?? 1,
+    pagination?.pagination?.pageSize ?? 15,
+    video?.documentId ?? '',
     locale,
     {
       categories: video?.categories,
@@ -70,7 +71,10 @@ export default function VideoSuggestion({ video }: Props) {
                 {video.title}
               </h6>
               <p className="font-normal text-xs text-gray-500">
-                {video.view_count || 0} {lang.videoPage.viewCount}
+                {formatNumberThousandDeliminator(
+                  Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000
+                )}{' '}
+                {lang.videoPage.viewCount}
               </p>
             </div>
           </LangLink>
@@ -79,17 +83,18 @@ export default function VideoSuggestion({ video }: Props) {
 
       <div className="flex justify-center items-center mt-10">
         <Pagination
-          showControls
-          isCompact
-          initialPage={1}
-          page={pagination?.pagination?.page}
-          total={pagination?.pagination?.total || 0}
           onChange={(page) => {
             setPagination({
               ...pagination,
               pagination: { ...pagination?.pagination, page },
             });
           }}
+          isCompact
+          showControls
+          total={pagination?.pagination?.pageCount ?? 0}
+          page={pagination?.pagination?.page ?? 1}
+          initialPage={1}
+          color="warning"
         />
       </div>
     </div>

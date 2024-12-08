@@ -86,7 +86,7 @@ export default ({ key, value, isActive, onNext, onPrevious, className }: any) =>
       key={key}
       // ref={ref}
       href={mainValue}
-      className={cn(className, isActive && 'text-white bg-gradient-to-br font-bold')}
+      className={cn(className, isActive && 'text-white bg-primary-500 font-bold')}
     >
       {value}
     </Link>
