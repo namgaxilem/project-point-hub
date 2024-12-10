@@ -3,10 +3,12 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import requests
 from scrapy import signals
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
+from scrapy.exceptions import IgnoreRequest
 
 
 class PointHubCrawlerSpiderMiddleware:
@@ -78,8 +80,18 @@ class PointHubCrawlerDownloaderMiddleware:
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
-        # print("===== process_request")
-        return None
+        try:
+            res = requests.get(
+                f'http://localhost:1337/api/videos?filters[slug_url][$eq]={request.url}')
+            res.raise_for_status()
+            data = res.json()
+            if (data['meta']['pagination']['total'] > 0):
+                raise IgnoreRequest(f"Ignore crawling to {request.url}!!!")
+            return None
+        except Exception as err:
+            print(
+                f"=== PointHubCrawlerDownloaderMiddleware process_request err, {err}")
+            raise IgnoreRequest()
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.

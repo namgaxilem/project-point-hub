@@ -47,10 +47,24 @@ class SubCxCrawlSpider(CrawlSpider):
             follow=True,
             process_request=set_playwright_true
         ),
+        Rule(
+            LinkExtractor(
+                allow=pagination_regex_list
+            ),
+            callback='parse_pagination_page',
+            follow=True,
+            process_request=set_playwright_true
+        ),
     )
 
     def __init__(self, *args, **kwargs):
         super(SubCxCrawlSpider, self).__init__(*args, **kwargs)
+
+    def parse_pagination_page(self, response):
+        links = response.css('a::attr(href)').getall()
+        for link in links:
+            absolute_url = response.urljoin(link)
+            yield scrapy.Request(url=absolute_url)  
 
     def parse_detail_page(self, response):
         item = SubCxCrawlerItem()
