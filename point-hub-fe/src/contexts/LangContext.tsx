@@ -19,7 +19,7 @@ export default function LangProvider({ dict, locale, children }) {
   const contextValue = useMemo(
     () => ({
       lang,
-      locale: locale || 'en',
+      locale: locale || 'vi',
     }),
     [lang, locale]
   );
