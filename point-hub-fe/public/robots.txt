@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.avmost.site
+
+# Sitemaps
+Sitemap: https://www.avmost.site/sitemap.xml

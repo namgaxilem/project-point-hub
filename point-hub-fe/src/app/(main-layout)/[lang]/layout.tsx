@@ -8,6 +8,7 @@ import { SITE_DOMAIN, SITE_NAME } from '@/config';
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDict(lang);
+  const { SEO } = dict;
 
   const title = `${dict.SEO.title} | ${SITE_NAME}`;
   const description = dict.SEO.description;
@@ -16,17 +17,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: title,
     description: description,
     openGraph: {
-      title: title,
-      description: description,
-      type: 'website',
-      url: `https://${SITE_DOMAIN}/${lang}/`,
+      title: SEO.title,
+      description: SEO.description,
+      type: SEO.meta["og:type"] || 'website',
+      url: SEO.meta.canonical || `https://www.example.com/${lang}/`, 
+      siteName: SEO.meta["og:site_name"] || SITE_NAME,
       images: [
         {
-          url: '/assets/images/main_logo.png',
-          secureUrl: '/assets/images/main_logo.png',
+          url: SEO.meta["og:image"] || '/assets/images/default_og_image.png',
+          secureUrl: SEO.meta["og:image"] || '/assets/images/default_og_image.png',
         },
       ],
     },
+     // Canonical URL (metadataBase)
+     metadataBase: new URL(SEO.meta.canonical || `https://${SITE_DOMAIN}/${lang}/`),
   };
 }
 
